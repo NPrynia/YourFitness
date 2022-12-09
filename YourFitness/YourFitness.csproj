@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Res\1.jpg" />
+    <None Remove="Res\bacground1.png" />
+    <None Remove="Res\bacground2.png" />
+    <None Remove="Res\BackgroundReg.jpg" />
+    <None Remove="Res\BackMan.png" />
+    <None Remove="Res\example.jpg" />
+    <None Remove="Res\exampleWorkout.jpg" />
+    <None Remove="Res\FrontMan.png" />
+    <None Remove="Res\SideMan.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HandyControl" Version="3.3.0" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-beta.603" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Res\1.jpg" />
+    <Resource Include="Res\bacground1.png" />
+    <Resource Include="Res\bacground2.png" />
+    <Resource Include="Res\BackgroundReg.jpg" />
+    <Resource Include="Res\BackMan.png" />
+    <Resource Include="Res\example.jpg" />
+    <Resource Include="Res\exampleWorkout.jpg" />
+    <Resource Include="Res\FrontMan.png" />
+    <Resource Include="Res\SideMan.png" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,66 @@
+﻿<Page x:Class="YourFitness.Pages.MessagePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:YourFitness.Pages" xmlns:hc="https://handyorg.github.io/handycontrol" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="950"
+      Title="MessagePage">
+
+    <Border Background="White" CornerRadius="20">
+        
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <StackPanel >
+                <hc:ChatBubble  Content="Привет" Type="String" Role="Sender"  Background="#ff844b" />
+                <hc:ChatBubble  Content="Как дела?" Type="String" Role="Sender"  Background="#ff844b" />
+                <hc:ChatBubble  Content="Все хорошо" Type="String" Role="Receiver"  Background="#ff844b" />
+                <hc:ChatBubble  Content="А у тебя" Type="String" Role="Receiver"  Background="#ff844b" />
+            </StackPanel>
+
+            <Border  Background="#f5f5f5" Grid.Row="1" />
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="291*"/>
+                    <ColumnDefinition Width="48*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <Image x:Name="sentImg" MaxHeight="200" MaxWidth="200" Margin="20 0 0 0" HorizontalAlignment="Left" />
+
+                    <TextBox x:Name="tbInput"
+                             
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         VerticalAlignment="Center" Margin="20" 
+                         Height="auto" MinHeight="30"  FontSize="18"
+                         Background="White"
+                         MaxLength="150"
+                         materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
+                         VerticalScrollBarVisibility="Auto"  />
+
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                   
+                    
+                    <Button x:Name="btnSentImg" Background="gray"  Width="60" Height="60"
+                            Style="{StaticResource MaterialDesignIconForegroundButton}" >
+                        <materialDesign:PackIcon  Kind="ImageMove" Foreground="#333333" Width="35" Height="35" />
+                    </Button>
+
+                    <!--<Button x:Name="btnSentMessage" Click="btnSentMessage_Click" Style="{StaticResource MaterialDesignIconForegroundButton}" Cursor="Hand"
+                        >
+                        <materialDesign:PackIcon Kind="Send" Width="40" Height="40" Foreground="#333333" />
+                    </Button>-->
+                </StackPanel>
+
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
+</Page>
