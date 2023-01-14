@@ -1,4 +1,9 @@
-﻿using System;
+﻿using LiveChartsCore.Measure;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore;
+using SkiaSharp;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,8 +20,14 @@ namespace YourFitness.Windows
     /// <summary>
     /// Логика взаимодействия для TemplateWindow.xaml
     /// </summary>
+    /// 
+
+  
     public partial class TemplateWindow : Window
     {
+
+      
+
         public TemplateWindow()
         {
             InitializeComponent();

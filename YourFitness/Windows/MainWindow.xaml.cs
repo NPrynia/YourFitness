@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -22,7 +23,9 @@ namespace YourFitness.Windows
         public MainWindow()
         {
             InitializeComponent();
+
             GlobalParamClass.userFrame = userFrame;
+            frameListWorkout.Navigate(new Pages.PageListWorkout());
         }
 
       
@@ -33,11 +36,15 @@ namespace YourFitness.Windows
             if (badgedLike.BadgeBackground.ToString() == "#FFFF844B")
             {
                 badgedLike.BadgeBackground = Brushes.Gray;
+                (btn.FindName("icon") as PackIcon).Kind = PackIconKind.HeartOutline;
+                btn.Foreground = Brushes.Black;
                 badgedLike.Badge = 3;
             }
             else
             {
                 badgedLike.Badge = 4;
+                (btn.FindName("icon") as PackIcon).Kind = PackIconKind.Heart;
+                btn.Foreground = Brushes.Red;
                 badgedLike.BadgeBackground = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff844b");
             }
         }
@@ -72,7 +79,7 @@ namespace YourFitness.Windows
 
         private void btnDeleteWorkout_Click(object sender, RoutedEventArgs e)
         {
-            borderWorkoutAddPost.Width = 0;
+            borderWorkoutAddPost.Height = 0;
         }
 
        
@@ -101,6 +108,17 @@ namespace YourFitness.Windows
         private void StackPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             userFrame.Navigate(new Pages.ProfilePage());
+        }
+
+        private void iconWorkout_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnStartWorkout_Click(object sender, RoutedEventArgs e)
+        {
+            WorkoutWindow workoutWindow = new WorkoutWindow();
+            workoutWindow.Show();
         }
     }
 }

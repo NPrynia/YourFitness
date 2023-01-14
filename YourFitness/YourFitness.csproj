@@ -12,16 +12,39 @@
     <None Remove="Res\bacground2.png" />
     <None Remove="Res\BackgroundReg.jpg" />
     <None Remove="Res\BackMan.png" />
+    <None Remove="Res\btnAbs.jpg" />
+    <None Remove="Res\btnArm.jpg" />
+    <None Remove="Res\btnBack.jpg" />
+    <None Remove="Res\btnBest.jpg" />
+    <None Remove="Res\btnCardio.jpg" />
+    <None Remove="Res\btnFullBody.jpg" />
+    <None Remove="Res\btnLegs.jpg" />
+    <None Remove="Res\btnNew.jpg" />
+    <None Remove="Res\btnshoulders.jpg" />
+    <None Remove="Res\btnStrength.jpg" />
+    <None Remove="Res\btnStretching.jpg" />
+    <None Remove="Res\btnсhest.jpg" />
     <None Remove="Res\example.jpg" />
     <None Remove="Res\exampleWorkout.jpg" />
     <None Remove="Res\FrontMan.png" />
+    <None Remove="Res\myWorkout.png" />
+    <None Remove="Res\pullUp.gif" />
     <None Remove="Res\SideMan.png" />
+    <None Remove="Res\tempWorkout.jpg" />
+    <None Remove="Res\tempWorkout2.jpg" />
+    <None Remove="tempWp\pushup1.png" />
+    <None Remove="tempWp\pushup2.png" />
+    <None Remove="tempWp\sit1.png" />
+    <None Remove="tempWp\sit2.png" />
+    <None Remove="Windows\tjji3c3j.5xb~" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Gu.Wpf.FlipView" Version="2.0.2" />
     <PackageReference Include="HandyControl" Version="3.3.0" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-beta.603" />
     <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,10 +53,30 @@
     <Resource Include="Res\bacground2.png" />
     <Resource Include="Res\BackgroundReg.jpg" />
     <Resource Include="Res\BackMan.png" />
+    <Resource Include="Res\btnAbs.jpg" />
+    <Resource Include="Res\btnArm.jpg" />
+    <Resource Include="Res\btnBack.jpg" />
+    <Resource Include="Res\btnBest.jpg" />
+    <Resource Include="Res\btnCardio.jpg" />
+    <Resource Include="Res\btnсhest.jpg" />
+    <Resource Include="Res\btnFullBody.jpg" />
+    <Resource Include="Res\btnLegs.jpg" />
+    <Resource Include="Res\btnNew.jpg" />
+    <Resource Include="Res\btnshoulders.jpg" />
+    <Resource Include="Res\btnStrength.jpg" />
+    <Resource Include="Res\btnStretching.jpg" />
     <Resource Include="Res\example.jpg" />
     <Resource Include="Res\exampleWorkout.jpg" />
     <Resource Include="Res\FrontMan.png" />
+    <Resource Include="Res\myWorkout.png" />
+    <Resource Include="Res\pullUp.gif" />
     <Resource Include="Res\SideMan.png" />
+    <Resource Include="Res\tempWorkout.jpg" />
+    <Resource Include="Res\tempWorkout2.jpg" />
+    <Resource Include="tempWp\pushup1.png" />
+    <Resource Include="tempWp\pushup2.png" />
+    <Resource Include="tempWp\sit1.png" />
+    <Resource Include="tempWp\sit2.png" />
   </ItemGroup>
 
 </Project>

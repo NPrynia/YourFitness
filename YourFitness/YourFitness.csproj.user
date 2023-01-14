@@ -10,6 +10,9 @@
     <Compile Update="Pages\MessagePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\PageListWorkout.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\ProfilePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,9 +43,18 @@
     <Compile Update="Windows\TemplateWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\TrainerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WorkoutWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\MessagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\PageListWorkout.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\ProfilePage.xaml">
@@ -73,6 +85,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\TemplateWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\TrainerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WorkoutWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

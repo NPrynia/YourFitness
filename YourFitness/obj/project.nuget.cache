@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AhPMwPMcdmpveBQaGXd0mzhK+TyxCA0f0dwfiZ0RhY5Pa9lcIfL4qbq5PnQRKOJzW+vGYpeHispk6xzdY6hlnw==",
+  "dgSpecHash": "dCHzdv6nTo2h2PZdT6A06/mleIG7s6oG2RYXK97ltp5UnkoD7tzcmm724+jMqO/g44NXhire0GS5NFHT1vUB+w==",
   "success": true,
   "projectFilePath": "F:\\Курсовая\\YourFitness\\YourFitness\\YourFitness.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nprya\\.nuget\\packages\\gu.wpf.flipview\\2.0.2\\gu.wpf.flipview.2.0.2.nupkg.sha512",
     "C:\\Users\\nprya\\.nuget\\packages\\handycontrol\\3.3.0\\handycontrol.3.3.0.nupkg.sha512",
     "C:\\Users\\nprya\\.nuget\\packages\\harfbuzzsharp\\2.8.2.3\\harfbuzzsharp.2.8.2.3.nupkg.sha512",
     "C:\\Users\\nprya\\.nuget\\packages\\harfbuzzsharp.nativeassets.macos\\2.8.2.3\\harfbuzzsharp.nativeassets.macos.2.8.2.3.nupkg.sha512",
@@ -22,7 +23,8 @@
     "C:\\Users\\nprya\\.nuget\\packages\\skiasharp.nativeassets.win32\\2.88.3\\skiasharp.nativeassets.win32.2.88.3.nupkg.sha512",
     "C:\\Users\\nprya\\.nuget\\packages\\skiasharp.views.desktop.common\\2.88.3\\skiasharp.views.desktop.common.2.88.3.nupkg.sha512",
     "C:\\Users\\nprya\\.nuget\\packages\\skiasharp.views.wpf\\2.88.3\\skiasharp.views.wpf.2.88.3.nupkg.sha512",
-    "C:\\Users\\nprya\\.nuget\\packages\\system.drawing.common\\4.5.1\\system.drawing.common.4.5.1.nupkg.sha512"
+    "C:\\Users\\nprya\\.nuget\\packages\\system.drawing.common\\4.5.1\\system.drawing.common.4.5.1.nupkg.sha512",
+    "C:\\Users\\nprya\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
   ],
   "logs": []
 }

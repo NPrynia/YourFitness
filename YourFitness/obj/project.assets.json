@@ -2,6 +2,22 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Gu.Wpf.FlipView/2.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Gu.Wpf.FlipView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Gu.Wpf.FlipView.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "HandyControl/3.3.0": {
         "type": "package",
         "compile": {
@@ -324,10 +340,41 @@
             "rid": "win"
           }
         }
+      },
+      "WpfAnimatedGif/2.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/WpfAnimatedGif.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/WpfAnimatedGif.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
       }
     }
   },
   "libraries": {
+    "Gu.Wpf.FlipView/2.0.2": {
+      "sha512": "3Pr7gYAbXC/JQWwrBaW9Te8tgtG54sqW8IL/HT0NejNt+PkH9Wz6neurSmXdvsdMYrM0CzO3ZdOepG08O/sOcw==",
+      "type": "package",
+      "path": "gu.wpf.flipview/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "gu.wpf.flipview.2.0.2.nupkg.sha512",
+        "gu.wpf.flipview.nuspec",
+        "lib/net45/Gu.Wpf.FlipView.dll",
+        "lib/net45/Gu.Wpf.FlipView.xml",
+        "lib/netcoreapp3.1/Gu.Wpf.FlipView.dll",
+        "lib/netcoreapp3.1/Gu.Wpf.FlipView.xml"
+      ]
+    },
     "HandyControl/3.3.0": {
       "sha512": "LY38yByPYXOP2kfQkneedgSE+Ps6XWsXId9hBoEgvef4/mdToqWNSueA6kg1u/nKCV1E8zdpI+ZvevDnlyF10Q==",
       "type": "package",
@@ -913,13 +960,35 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "WpfAnimatedGif/2.0.2": {
+      "sha512": "B0j9SqtThyHVTiOPvu6yR+39Te0g3o+7Jjb+qEm7+Iz1HRqbE5/4QV+ntHWOYYBPOUFr9x1mdzGl/EzWP+nKiA==",
+      "type": "package",
+      "path": "wpfanimatedgif/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/WpfAnimatedGif.dll",
+        "lib/net35/WpfAnimatedGif.pdb",
+        "lib/net35/WpfAnimatedGif.xml",
+        "lib/net40/WpfAnimatedGif.dll",
+        "lib/net40/WpfAnimatedGif.pdb",
+        "lib/net40/WpfAnimatedGif.xml",
+        "lib/netcoreapp3.0/WpfAnimatedGif.dll",
+        "lib/netcoreapp3.0/WpfAnimatedGif.pdb",
+        "lib/netcoreapp3.0/WpfAnimatedGif.xml",
+        "wpfanimatedgif.2.0.2.nupkg.sha512",
+        "wpfanimatedgif.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Gu.Wpf.FlipView >= 2.0.2",
       "HandyControl >= 3.3.0",
       "LiveChartsCore.SkiaSharpView.WPF >= 2.0.0-beta.603",
-      "MaterialDesignThemes >= 4.6.1"
+      "MaterialDesignThemes >= 4.6.1",
+      "WpfAnimatedGif >= 2.0.2"
     ]
   },
   "packageFolders": {
@@ -966,6 +1035,10 @@
       "netcoreapp3.1": {
         "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "Gu.Wpf.FlipView": {
+            "target": "Package",
+            "version": "[2.0.2, )"
+          },
           "HandyControl": {
             "target": "Package",
             "version": "[3.3.0, )"
@@ -977,6 +1050,10 @@
           "MaterialDesignThemes": {
             "target": "Package",
             "version": "[4.6.1, )"
+          },
+          "WpfAnimatedGif": {
+            "target": "Package",
+            "version": "[2.0.2, )"
           }
         },
         "imports": [

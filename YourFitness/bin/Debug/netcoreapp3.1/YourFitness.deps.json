@@ -8,12 +8,22 @@
     ".NETCoreApp,Version=v3.1": {
       "YourFitness/1.0.0": {
         "dependencies": {
+          "Gu.Wpf.FlipView": "2.0.2",
           "HandyControl": "3.3.0",
           "LiveChartsCore.SkiaSharpView.WPF": "2.0.0-beta.603",
-          "MaterialDesignThemes": "4.6.1"
+          "MaterialDesignThemes": "4.6.1",
+          "WpfAnimatedGif": "2.0.2"
         },
         "runtime": {
           "YourFitness.dll": {}
+        }
+      },
+      "Gu.Wpf.FlipView/2.0.2": {
+        "runtime": {
+          "lib/netcoreapp3.1/Gu.Wpf.FlipView.dll": {
+            "assemblyVersion": "2.0.2.0",
+            "fileVersion": "2.0.2.0"
+          }
         }
       },
       "HandyControl/3.3.0": {
@@ -214,6 +224,14 @@
           "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.Win32.SystemEvents": "4.5.0"
         }
+      },
+      "WpfAnimatedGif/2.0.2": {
+        "runtime": {
+          "lib/netcoreapp3.0/WpfAnimatedGif.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.2.0"
+          }
+        }
       }
     }
   },
@@ -222,6 +240,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Gu.Wpf.FlipView/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3Pr7gYAbXC/JQWwrBaW9Te8tgtG54sqW8IL/HT0NejNt+PkH9Wz6neurSmXdvsdMYrM0CzO3ZdOepG08O/sOcw==",
+      "path": "gu.wpf.flipview/2.0.2",
+      "hashPath": "gu.wpf.flipview.2.0.2.nupkg.sha512"
     },
     "HandyControl/3.3.0": {
       "type": "package",
@@ -355,6 +380,13 @@
       "sha512": "sha512-GiyeGi/v4xYDz1vCNFwFvhz9k1XddOG7VD3jxRqzRBCbTHji+s3HxxbxtoymuK4OadEpgotI8zQ5+GEEH9sUEQ==",
       "path": "system.drawing.common/4.5.1",
       "hashPath": "system.drawing.common.4.5.1.nupkg.sha512"
+    },
+    "WpfAnimatedGif/2.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B0j9SqtThyHVTiOPvu6yR+39Te0g3o+7Jjb+qEm7+Iz1HRqbE5/4QV+ntHWOYYBPOUFr9x1mdzGl/EzWP+nKiA==",
+      "path": "wpfanimatedgif/2.0.2",
+      "hashPath": "wpfanimatedgif.2.0.2.nupkg.sha512"
     }
   }
 }

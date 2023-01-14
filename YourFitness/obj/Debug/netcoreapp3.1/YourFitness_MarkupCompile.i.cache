@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 F:\Курсовая\YourFitness\YourFitness\App.xaml
-11-1645088412
+15-19060872
 
-16-1234065579
-205-1612684784
-Pages\MessagePage.xaml;Pages\ProfilePage.xaml;Pages\RegistrationPage2.xaml;Pages\RegistrationPage3.xaml;Pages\RegistrationPage4.xaml;Pages\ResitrationPage1.xaml;Windows\AuthWindow.xaml;Windows\MainWindow.xaml;Windows\ProfileStatsWindow.xaml;Windows\RegistrationWindow.xaml;Windows\TemplateWindow.xaml;
+24-977085772
+207-1451357436
+Pages\MessagePage.xaml;Pages\PageListWorkout.xaml;Pages\ProfilePage.xaml;Pages\RegistrationPage2.xaml;Pages\RegistrationPage3.xaml;Pages\RegistrationPage4.xaml;Pages\ResitrationPage1.xaml;Windows\AddWorkoutWindow.xaml;Windows\AuthWindow.xaml;Windows\MainWindow.xaml;Windows\ProfileStatsWindow.xaml;Windows\RegistrationWindow.xaml;Windows\TemplateWindow.xaml;Windows\TrainerWindow.xaml;Windows\WorkoutWindow.xaml;
 
-True
+False
 

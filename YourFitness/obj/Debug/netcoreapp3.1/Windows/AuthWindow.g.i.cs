@@ -147,7 +147,7 @@ namespace YourFitness.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/YourFitness;component/windows/authwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/YourFitness;V1.0.0.0;component/windows/authwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\AuthWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

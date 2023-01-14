@@ -98,3 +98,13 @@ F:\Курсовая\YourFitness\YourFitness\bin\Debug\netcoreapp3.1\runtimes\win
 F:\Курсовая\YourFitness\YourFitness\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\libSkiaSharp.dll
 F:\Курсовая\YourFitness\YourFitness\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\libSkiaSharp.dll
 F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\Pages\PageListWorkout.g.cs
+F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\Pages\PageListWorkout.baml
+F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\Windows\WorkoutWindow.g.cs
+F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\Windows\WorkoutWindow.baml
+F:\Курсовая\YourFitness\YourFitness\bin\Debug\netcoreapp3.1\Gu.Wpf.FlipView.dll
+F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\Windows\AddWorkoutWindow.g.cs
+F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\Windows\AddWorkoutWindow.baml
+F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\Windows\TrainerWindow.g.cs
+F:\Курсовая\YourFitness\YourFitness\obj\Debug\netcoreapp3.1\Windows\TrainerWindow.baml
+F:\Курсовая\YourFitness\YourFitness\bin\Debug\netcoreapp3.1\WpfAnimatedGif.dll

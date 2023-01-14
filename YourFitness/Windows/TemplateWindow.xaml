@@ -3,152 +3,113 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:YourFitness.Windows" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:hc="https://handyorg.github.io/handycontrol"
-        mc:Ignorable="d" Background="Transparent"  FontFamily="Cascadia Mono Light"
-        Title="TemplateWindow" Height="800" Width="900">
+        xmlns:local="clr-namespace:YourFitness.Windows" 
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d" Background="Transparent"
+        FontFamily="Cascadia Mono Light"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+        Title="TemplateWindow" Height="1050" Width="1000">
+   
     <Grid >
-        
-        
-
-        <!--Comments-->
-        <Border Margin="0 10 0 0" Background="White" Width="800"  HorizontalAlignment="Center"
-                        CornerRadius="20" VerticalAlignment="Top" >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="70"/>
-                </Grid.RowDefinitions>
-                <hc:Gravatar Id="1234"  Style="{StaticResource GravatarCircleImg}">
-                    <Image />
-                </hc:Gravatar>
-                <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
-                    <TextBlock>Hello World</TextBlock>
-                </materialDesign:TransitioningContent>
-                
-                <TextBox Margin="10" TextWrapping="Wrap"  Background="White"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                         BorderBrush="#ff844b" BorderThickness="3"
-                         FontSize="25" MinHeight="110" Grid.Row="1"/>
 
 
 
-                <StackPanel  Grid.Row="2">
-                    
-                
+        <Border  Background="White" CornerRadius="20">
 
-                <Border Height="300" Width="300" HorizontalAlignment="Left" Margin="10">
+            <StackPanel
+      Margin="16">
+                <TextBlock
+        Text="Найти упражнение" Margin="0 10" />
+                <ComboBox
+  materialDesign:HintAssist.Hint="Поиск"
+  materialDesign:HintAssist.HintOpacity=".26"
+  materialDesign:ComboBoxAssist.MaxLength="2"
+  IsEditable="True">
+                    <ComboBoxItem
+    Content="Приседания" />
+                    <ComboBoxItem
+    Content="Отжимания" />
+                    <ComboBoxItem
+    Content="Подтягивание" />
+                    <ComboBoxItem
+    Content="Планка" />
+                </ComboBox>
 
-                        <Grid>
+                <StackPanel  Margin="0 10" Orientation="Horizontal">
 
-                            <Image  Source="/Res/1.jpg" Stretch="Fill"/>
-
-                            <Button Name="btnImage"
-               VerticalAlignment="Top"
-            HorizontalAlignment="Right" 
-                Height="25" Width="45" Background="Transparent" BorderThickness="0" Cursor="Hand">
-                                <materialDesign:PackIcon
-                
-                Kind="WindowClose" Foreground="#FF494949" 
-                HorizontalAlignment="Center"  />
-                            </Button>
-
-                        </Grid>
-                    
-                </Border >
-
-                    <Border BorderBrush="Black" BorderThickness="1" Background="White" HorizontalAlignment="Left" Margin="10" Width="300" Height="45"  CornerRadius="20">
-                        <Grid>
-                            <TextBlock Text="Тренировка" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                                                FontSize="20" />
-
-                            <Button Name="btnDeleteWorkout"
-              Margin="5" VerticalAlignment="Center"
-            HorizontalAlignment="Right" 
-                Height="25" Width="45" Background="Transparent" BorderThickness="0" Cursor="Hand">
-                                <materialDesign:PackIcon
-                
-                Kind="WindowClose" Foreground="#FF494949" 
-                HorizontalAlignment="Center"  />
-
-                            </Button>
-
-                        </Grid>
-                               
-                         
-                    </Border>
+                    <TextBlock Text="Количество|Секунд :" VerticalAlignment="Center"/>
+                    <TextBox Text="" Width="30"/>
 
                 </StackPanel>
-                
 
-
-
-
-                <StackPanel Grid.Row="3" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <materialDesign:PopupBox
-                     Margin="0 0 10 0" Width="35" Height="35"
-                    Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
-  PlacementMode="BottomAndAlignCentres"
-  ToolTipService.Placement="Right" HorizontalAlignment="Right"
-  ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox"
-  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                        <StackPanel>
-                            <Button
-      ToolTip="Добавить фото"
-      Content="{materialDesign:PackIcon FileImagePlus}" />
-                            <Button
-      ToolTip="Добавить тренировку"
-      Content="{materialDesign:PackIcon WeightLifter}" />
-                        </StackPanel>
-                    </materialDesign:PopupBox>
-
-                    <Button 
-                        Grid.Row="3"  VerticalAlignment="Center"
-                             
-                         Margin="0 0 10 0"
-                                              x:Name="btnSave"
-                                                Grid.Column="1"
-                                              Width="130" Height="35"
-                                              Background="#ff844b"
-                                              BorderBrush="#ff844b"
-                                              Foreground="White" 
-                                              Content="Опубликовать"
-                                              FontSize="10" >
-                        <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
+                <StackPanel
+        Orientation="Horizontal"
+        HorizontalAlignment="Center">
+                    <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsCancel="True"
+          Margin="0 8 8 0"
+          Content="Отмена"
+          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
                     </Button>
+                    <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsDefault="True"
+          Margin="0 8 8 0"
+          Content="Добавить"
+          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                    </Button>
+                   
+                </StackPanel>
+
+
+
+                <StackPanel Grid.Row="1" Margin="0 100 0 0">
+                    <TextBox  Text="dfg"
+                                Margin="0 30 0 20" MinWidth="650" 
+                              materialDesign:HintAssist.Hint="Название услуги"  
+                              TextWrapping="Wrap"
+                 FontSize="35"  />
+                    <TextBox  
+                                         MinWidth="850"
+                                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                            Text="{Binding description}"
+                                            materialDesign:HintAssist.Hint="Описание"
+                                     TextWrapping="Wrap"
+                 FontSize="30" 
+                 materialDesign:HintAssist.IsFloating="True" />
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+
+                        <TextBlock Foreground="#ff844b"
+                                Margin="0 20 0 0" Text="Стоимость:"
+                                        TextWrapping="Wrap"
+                 FontSize="30" VerticalAlignment="Bottom" />
+                        <TextBox Foreground="#ff844b"
+                                Margin="0 20 0 0" materialDesign:HintAssist.Hint="Стоимость"
+                                        TextWrapping="Wrap"
+                 FontSize="30" Text="{Binding cost}" />
+
+                        <Button
+                                                             Name="btnDeleteService"
+                                             Height="33" Margin="40 0 0 0" Width="250" VerticalAlignment="Bottom"
+                                             Background="#ff844b" 
+                                             BorderBrush="#ff844b" 
+                                             Foreground="White"
+                                             Content="Удалить"
+                                             FontSize="20" >
+                            <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
+                        </Button>
+
+
+                    </StackPanel>
 
 
                 </StackPanel>
-               
+            </StackPanel>
 
-
-
-
-
-              
-
-                  
-
-                  
-
-
-                <Button 
-            Name="exitBtn"  Margin="5"
-            HorizontalAlignment="Right"  VerticalAlignment="Top"
-                     Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                Height="25" Width="45" Background="Transparent" BorderThickness="0" Cursor="Hand">
-                    <materialDesign:PackIcon
-                
-                Kind="WindowClose" Foreground="#FF494949" 
-                HorizontalAlignment="Center"  />
-
-                </Button>
-
-
-
-            </Grid>
         </Border>
+
+
 
     </Grid>
 </Window>

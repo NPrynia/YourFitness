@@ -103,6 +103,9 @@ namespace YourFitness.Windows
 
         }
 
-      
+        private void btnLogin_Click_1()
+        {
+
+        }
     }
 }

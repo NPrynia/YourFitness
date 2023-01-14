@@ -116,7 +116,7 @@
 
 
 
-                <materialDesign:Transitioner Name="trProfilemessage" SelectedIndex="0" Margin="20" Grid.Row="1">
+                <materialDesign:Transitioner Name="trProfilemessage" SelectedIndex="1" Margin="20" Grid.Row="1">
 
 
                     <!--NewsFeed-->
@@ -318,11 +318,12 @@
 
                                                         <materialDesign:Badged
                             Name="badgedLike" Badge="3" BadgeBackground="gray" >
-                                                            <Button x:Name="btnLike" Content="{materialDesign:PackIcon HeartOutLine}" Foreground="black"
+                                                            <Button x:Name="btnLike"  Foreground="black"
                     HorizontalAlignment="Left" 
                     Click="btnLike_Click"
                     Background="#f5f5f5" BorderThickness="0" Width="100"
                     >
+                                                                <materialDesign:PackIcon x:Name="icon" Kind="HeartOutLine" />
 
                                                                 <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
                                                                 <hc:FloatingBlock.ContentTemplate>
@@ -373,35 +374,458 @@
                                             </Border>
                                             <!--Workout-->
                                             <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
-                                                <Border Width="700" Height="650" HorizontalAlignment="Center"
-                        VerticalAlignment="Center" Background="White" CornerRadius="20">
+
+                                                <Grid  Width="920" Height="560" HorizontalAlignment="Center" VerticalAlignment="Center" >
+
                                                     <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="42*"/>
-                                                            <RowDefinition Height="283*"/>
-                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="17*"/>
+                                                            <ColumnDefinition Width="10*"/>
+                                                        </Grid.ColumnDefinitions>
 
-                                                        <Button
-                                                   Style="{StaticResource MaterialDesignToolForegroundButton}" 
-                                                  Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"    
-                                                   HorizontalAlignment="Left" VerticalAlignment="Top">
-                                                            <materialDesign:PackIcon
-                                                      Kind="ArrowLeft" Width="30" Height="30"
-                                                      HorizontalAlignment="Right" />
-                                                        </Button>
+                                                        <Border Background="#f5f5f5" CornerRadius="20" Grid.ColumnSpan="2"/>
 
-                                                        <TextBlock Text="Название тренировки"
-                                                                       HorizontalAlignment="Center"
-                                                                       VerticalAlignment="Center"
-                                                                       FontSize="30"
-                                                                       />
+
+                                                        <Border Background="white" CornerRadius="20"/>
+
+
+                                                        <Grid  Grid.Column="1" Margin="20" VerticalAlignment="Top"  MaxHeight="550" MinHeight="300">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="62*"/>
+                                                                <RowDefinition Height="10*"/>
+                                                            </Grid.RowDefinitions>
+
+                                                            <hc:ScrollViewer>
+
+                                                                <StackPanel >
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal" >
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal" >
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 2"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal" >
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal" >
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal" >
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal" >
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal" >
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+
+
+                                                                    <Border>
+
+                                                                        <Grid>
+                                                                            <StackPanel Orientation="Horizontal">
+                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                    <TextBlock Text="Surname Fname" />
+                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+
+                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                        </Grid>
+
+                                                                    </Border>
+
+
+                                                                </StackPanel>
+
+
+                                                            </hc:ScrollViewer>
+
+
+
+
+
+
+
+                                                            <hc:TextBox  Grid.Row="1" MaxLength="150" ShowClearButton="True" Height="20" Margin="10" Text="213"/>
+
+                                                        </Grid>
+
+
+
+                                                        <Grid Margin="20" >
+
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="163*"/>
+                                                                <ColumnDefinition Width="30*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto"/>
+                                                                <RowDefinition Height="13*"/>
+                                                            </Grid.RowDefinitions>
+
+                                                            <StackPanel  Orientation="Horizontal" >
+                                                                <hc:Gravatar  HorizontalAlignment="Left" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
+                           Style="{StaticResource GravatarCircle}"/>
+                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                    <TextBlock Text="Surname Fname" FontSize="23" />
+                                                                    <TextBlock Text="Описание описание описание" FontSize="18" Foreground="Gray" Margin="0 10 0 0"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+
+
+                                                            <StackPanel   VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+                                                                <TextBlock  Text="Оцениить:" FontSize="23" />
+                                                                <materialDesign:RatingBar
+                                                             x:Name="ratinBarWorkoutInProfileTab"
+                                                             Min="0" HorizontalAlignment="Right"
+                                                             Max="5"
+                                                             Value="0"
+                                                             ValueIncrements="0.5"
+                                                             IsPreviewValueEnabled="True" />
+                                                            </StackPanel>
+
+
+
+
+                                                            <StackPanel Margin="0 15 0 0"  Grid.Row="1" Grid.ColumnSpan="2">
+                                                                <TextBlock 
+                              
+                    FontSize="23" TextWrapping="Wrap"
+                    Text="Описание:" 
+                    
+                    />
+                                                                <TextBlock 
+                       Margin="0 5 0 0"       
+                    FontSize="20" TextWrapping="Wrap"
+                    Text="ОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасние" 
+                    
+                    />
+
+
+                                                                <StackPanel  Margin="0 15 0 0" Orientation="Horizontal">
+                                                                    <TextBlock 
+                              
+                    FontSize="23" TextWrapping="Wrap"
+                    Text="Количество упражнений:" 
+                     
+                    />
+                                                                    <TextBlock 
+                              
+                    FontSize="20" VerticalAlignment="Bottom" TextWrapping="Wrap"
+                    Text="12" 
+                    
+                    />
+                                                                </StackPanel>
+
+                                                                <Expander  Margin="0 15 0 0" BorderThickness="0" Background="Transparent"   >
+                                                                    <Expander.Resources>
+                                                                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
+                                                                    </Expander.Resources>
+                                                                    <Expander.Header>
+                                                                        <TextBlock 
+                      Margin="-23.8 0 0 0"           
+                    FontSize="23" TextWrapping="Wrap"
+                    Text="Мускулы:" 
+                    />
+                                                                    </Expander.Header>
+                                                                    <!--100% - 600width-->
+                                                                    <StackPanel Margin="5 0 0 0">
+                                                                        <hc:ScrollViewer>
+                                                                            <StackPanel>
+
+                                                                                <StackPanel  Height="70">
+                                                                                    <TextBlock 
+                                              Margin="0 10 0 5"         
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="Спина" 
+                                              />
+                                                                                    <StackPanel Orientation="Horizontal" >
+                                                                                        <Border Height="30" Width="150" CornerRadius="8" Background="#ff844b"/>
+                                                                                        <TextBlock Margin="10 0 0 0"
+                                              VerticalAlignment="Center"        
+                                              FontSize="20"  TextWrapping="Wrap"
+                                              Text="25" 
+                                              />
+                                                                                        <TextBlock 
+                                              VerticalAlignment="Center"      
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="%" 
+                                              />
+                                                                                    </StackPanel>
+                                                                                </StackPanel>
+
+                                                                                <StackPanel  Height="70">
+                                                                                    <TextBlock 
+                                             Margin="0 5 0 5"         
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="Грудь" 
+                                              />
+                                                                                    <StackPanel Orientation="Horizontal">
+                                                                                        <Border Height="30" Width="270" CornerRadius="8" Background="#ff844b"/>
+                                                                                        <TextBlock 
+                                              Margin="10 0 0 0"
+                                              VerticalAlignment="Center"       
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="45" 
+                                              />
+                                                                                        <TextBlock 
+                                             Margin="10 0 0 0"
+                                              VerticalAlignment="Center"        
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="%" 
+                                              />
+                                                                                    </StackPanel>
+                                                                                </StackPanel>
+
+
+                                                                                <StackPanel  Height="70">
+                                                                                    <TextBlock 
+                                              Margin="0 5 0 5"         
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="Плечи" 
+                                              />
+                                                                                    <StackPanel Orientation="Horizontal">
+                                                                                        <Border Height="30" Width="180" CornerRadius="8" Background="#ff844b"/>
+                                                                                        <TextBlock 
+                                              Margin="10 0 0 0"
+                                              VerticalAlignment="Center"        
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="30" 
+                                              />
+                                                                                        <TextBlock 
+                                             Margin="10 0 0 0"
+                                              VerticalAlignment="Center"       
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="%" 
+                                              />
+                                                                                    </StackPanel>
+                                                                                </StackPanel>
+
+
+                                                                                <StackPanel  Height="0">
+                                                                                    <TextBlock 
+                                              Margin="0 5 0 5"         
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="Руки" 
+                                              />
+                                                                                    <StackPanel Orientation="Horizontal">
+                                                                                        <Border Height="30" Width="150" CornerRadius="8" Background="#ff844b"/>
+                                                                                        <TextBlock 
+                                            Margin="10 0 0 0"
+                                              VerticalAlignment="Center"        
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="25" 
+                                              />
+                                                                                        <TextBlock 
+                                            Margin="10 0 0 0"
+                                              VerticalAlignment="Center"        
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="%" 
+                                              />
+                                                                                    </StackPanel>
+                                                                                </StackPanel>
+
+
+                                                                                <StackPanel  Height="0">
+                                                                                    <TextBlock 
+                                              Margin="0 1 0 5"         
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="Ноги" 
+                                              />
+                                                                                    <StackPanel Orientation="Horizontal">
+                                                                                        <Border Height="30" Width="150" CornerRadius="8" Background="#ff844b"/>
+                                                                                        <TextBlock 
+                                            Margin="10 0 0 0"
+                                              VerticalAlignment="Center"         
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="25" 
+                                              />
+                                                                                        <TextBlock 
+                                          Margin="10 0 0 0"
+                                              VerticalAlignment="Center"        
+                                              FontSize="20" TextWrapping="Wrap"
+                                              Text="%" 
+                                              />
+                                                                                    </StackPanel>
+                                                                                </StackPanel>
+
+                                                                            </StackPanel>
+
+                                                                        </hc:ScrollViewer>
+                                                                    </StackPanel>
+
+                                                                </Expander>
+
+                                                            </StackPanel>
+
+
+
+                                                        </Grid>
+
+
 
 
 
                                                     </Grid>
 
-                                                </Border>
+
+                                                    <Button Margin="-3"
+                                                   Style="{StaticResource MaterialDesignToolForegroundButton}" 
+                                                  Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"    
+                                                   HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                        <materialDesign:PackIcon
+                                                      Kind="ArrowLeft" Width="29" Height="29"
+                                                      HorizontalAlignment="Right" />
+                                                    </Button>
+
+                                                </Grid>
+
+
                                             </materialDesign:TransitionerSlide>
+
 
 
 
@@ -522,38 +946,40 @@
                                     <hc:ChatBubble  Content="А у тебя" Type="String" Role="Receiver"  Background="#ff844b" />
                                 </StackPanel>
 
-                                <Border   Background="#f5f5f5" Grid.Row="1" />
+                                <Border  Background="#f5f5f5"  Grid.Row="2" CornerRadius="38" Margin="20" >
+                                    <Grid >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="40*"/>
+                                            <ColumnDefinition Width="255*"/>
+                                            <ColumnDefinition Width="40*"/>
+                                        </Grid.ColumnDefinitions>
 
-                                <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="291*"/>
-                                        <ColumnDefinition Width="48*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel 
-                         VerticalAlignment="Center" >
 
-                                        <TextBox 
-                             MaxLength="150"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                         Height="auto" MinHeight="30"  FontSize="18"
-                         Background="White"
+                                        <Button   x:Name="btnPickImgImgInMessageTab" Background="Transparent"  Width="50" Height="50"
+                            Style="{StaticResource MaterialDesignIconForegroundButton}" >
+                                            <materialDesign:PackIcon  Kind="ImageMove" Foreground="#333333" Width="40" Height="40" />
+                                        </Button>
+
+
+                                        <TextBox  
+                             MaxLength="150" Grid.Column="1" 
+                           FontSize="30"  VerticalAlignment="Center"
+                           BorderThickness="0"  materialDesign:HintAssist.Hint="Введите сообщение"
                          materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
                          VerticalScrollBarVisibility="Auto"  />
 
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
 
 
-                                        <Button x:Name="btnSentImg" Background="#f5f5f5"  Width="60" Height="60"
+
+                                        <Button   Grid.Column="2" x:Name="btnSentImgInMessageTab" Background="Transparent"  Width="50" Height="50"
                             Style="{StaticResource MaterialDesignIconForegroundButton}" >
-                                            <materialDesign:PackIcon  Kind="ImageMove" Foreground="#333333" Width="35" Height="35" />
+                                            <materialDesign:PackIcon  Kind="Send" Foreground="#333333" Width="40" Height="40" />
                                         </Button>
 
-                                    </StackPanel>
 
 
-                                </Grid>
-
+                                    </Grid>
+                                </Border>
                             </Grid>
 
                         </Border>
@@ -627,7 +1053,7 @@
                         </Border>
 
                         <StackPanel Margin="20">
-                            <TextBlock Text="Прогресс за неделю" FontSize="25" Margin="0 0 0 10"/>
+                            <TextBlock Text="Прогресс за неделю" HorizontalAlignment="Center" FontSize="25" Margin="0 0 0 10"/>
                             <Border Background="White"   CornerRadius="20">
                                 <StackPanel Margin="10">
                                     <hc:CircleProgressBar Value="25" FontSize="30" Margin="16,0,0,0"/>
@@ -650,7 +1076,7 @@
                         </StackPanel>
 
                         <StackPanel Margin="20">
-                            <TextBlock Text="Последние трнеировки" FontSize="25" Margin="0 0 0 10"/>
+                            <TextBlock Text="Последние трнеировки" HorizontalAlignment="Center" FontSize="25" Margin="0 0 0 10"/>
                             <Border Background="White"   CornerRadius="20">
                                 <StackPanel Margin="5" Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -683,6 +1109,18 @@
                         </StackPanel>
 
                         <Button 
+                                                Grid.Column="1" Name="btnTrainterService"
+                                        Margin="0 20 0 0" Click="btnTrainterService_Click"
+                                              Width="230" Height="40"
+                                              Background="#ff844b"
+                                              BorderBrush="#ff844b"
+                                              Foreground="White"
+                                              Content="Тренирские услуги"
+                                              FontSize="19" Cursor="Hand">
+                            <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
+                        </Button>
+
+                        <Button 
                                               
                                         Click="btnMoreInfo_Click"
                                                 Grid.Column="1"
@@ -695,6 +1133,8 @@
                                               FontSize="19" Cursor="Hand">
                             <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
                         </Button>
+
+                       
 
                     </StackPanel>
 

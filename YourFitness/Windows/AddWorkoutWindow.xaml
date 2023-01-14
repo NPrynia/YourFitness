@@ -1,0 +1,203 @@
+﻿<Window x:Class="YourFitness.Windows.AddWorkoutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YourFitness.Windows" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d" FontFamily="Cascadia Mono Light"
+        WindowStartupLocation="CenterScreen"
+        
+        Title="AddWorkoutWindow" Height="900" Width="1550">
+    <Grid Margin="10">
+
+
+        <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="647*"/>
+                    <ColumnDefinition Width="300*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="305*"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBox materialDesign:HintAssist.Hint="Название тренировки"
+                                       Grid.ColumnSpan="2"   TextAlignment="Center"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                           FontSize="40" />
+
+
+
+                <StackPanel 
+                                Margin="30"
+                                Grid.Row="1" >
+
+
+                    <TextBlock Text="Описание:" 
+                           FontSize="30" />
+
+                    <TextBox 
+                                Margin="0 20 200 0"
+                                MinHeight="100"         
+                               Style="{StaticResource MaterialDesignOutlinedTextBox}" TextWrapping="Wrap"
+                 FontSize="20" 
+                 materialDesign:HintAssist.IsFloating="True" />
+
+                <TextBlock Text="Упражнения:" Margin="0 20 0 0"
+                           FontSize="30" />
+
+                <Border Margin="0 10 200 0"   VerticalAlignment="Top">
+                    <Grid>
+                        <materialDesign:DialogHost
+  DialogTheme="Inherit">
+                            <materialDesign:DialogHost.DialogContent>
+
+                                <Border  Background="White" Width="400" Height="300" CornerRadius="20">
+
+                                    <StackPanel
+      Margin="16">
+                                        <TextBlock
+        Text="Найти упражнение" Margin="0 10" />
+                                        <ComboBox
+  materialDesign:HintAssist.Hint="Поиск" Name="cbExercise"
+  materialDesign:HintAssist.HintOpacity=".26"
+  materialDesign:ComboBoxAssist.MaxLength="2"
+  IsEditable="True">
+                                            <ComboBoxItem
+    Content="Приседания" />
+                                            <ComboBoxItem
+    Content="Отжимания" />
+                                            <ComboBoxItem
+    Content="Подтягивание" />
+                                            <ComboBoxItem
+    Content="Планка" />
+                                        </ComboBox>
+
+                                        <StackPanel  Margin="0 10" Orientation="Horizontal">
+
+                                            <TextBlock Text="Количество|Секунд :" VerticalAlignment="Center"/>
+                                            <TextBox Name="tbQty" Text="" Width="30"/>
+
+                                        </StackPanel>
+
+                                        <StackPanel
+        Orientation="Horizontal"
+        HorizontalAlignment="Center">
+                                            <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsCancel="True"
+          Margin="0 8 8 0"
+          Content="Отмена"
+          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                                            </Button>
+                                            <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsDefault="True"
+          Margin="0 8 8 0"
+          Content="Добавить" Name="addExerciseInWorrkout" Click="addExerciseInWorrkout_Click"
+          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                                            </Button>
+
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                </Border>
+
+
+                            </materialDesign:DialogHost.DialogContent>
+                            
+                            <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition
+          Height="*" />
+                                        <RowDefinition
+          Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                <hc:ScrollViewer>
+                                    <DataGrid
+                                        Name="dataGridExercise"
+                                         SelectionUnit="FullRow" Background="Transparent"
+                                        KeyDown="dataGridExercise_KeyDown"
+                                         SelectionMode="Extended" CanUserAddRows="False"
+                                         AutoGenerateColumns="False" ItemsSource="{Binding}"
+                                        >
+                                        
+                                        
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn IsReadOnly="True" Header="Название упражнения" Binding="{Binding Path=exercise}" />
+                                            <DataGridTextColumn Header="Количестово" Binding="{Binding Path=qty}" />
+                                        </DataGrid.Columns>
+                                        
+
+
+                                    </DataGrid>
+                                    
+                                
+                                </hc:ScrollViewer>
+                                   
+                                   
+                                    <Button
+        Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+        VerticalAlignment="Bottom" 
+        HorizontalAlignment="Right"
+        Grid.Row="0"
+        Margin="0 0 28 -20"
+        Content="{materialDesign:PackIcon Kind=Plus, Size=22}" />
+                                </Grid>
+                                
+                        </materialDesign:DialogHost>
+
+
+                    </Grid>
+                </Border>
+
+                </StackPanel>
+
+
+            <StackPanel Margin="10" Grid.Row="1" Grid.Column="1">
+
+                <TextBlock Text="Сложность:"  Margin="0 20 0 10"
+                           FontSize="30" />
+
+                <Slider
+  Value="1"
+  Minimum="1"
+  Maximum="3"
+  Style="{StaticResource MaterialDesignDiscreteSlider}"
+  TickPlacement="BottomRight" />
+
+
+                <TextBlock Text="Длительность:"  Margin="0 20 0 10"
+                           FontSize="30" />
+
+
+                <hc:NumericUpDown 
+                                    FontSize="20"  BorderBrush="Black"
+                                   Height="45" 
+                                    Minimum="0" Maximum="300"
+                                     Width="100" HorizontalAlignment="Left"
+                                    Style="{StaticResource NumericUpDownPlus}">
+
+                </hc:NumericUpDown>
+
+
+            </StackPanel>
+            
+                
+
+
+
+
+
+
+
+            </Grid>
+
+
+
+    </Grid>
+</Window>

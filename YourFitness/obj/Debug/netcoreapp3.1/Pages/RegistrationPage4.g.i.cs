@@ -108,7 +108,7 @@ namespace YourFitness.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/YourFitness;component/pages/registrationpage4.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/YourFitness;V1.0.0.0;component/pages/registrationpage4.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\RegistrationPage4.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

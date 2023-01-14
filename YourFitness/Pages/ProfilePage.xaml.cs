@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -56,11 +57,15 @@ namespace YourFitness.Pages
             if (badgedLike.BadgeBackground.ToString() == "#FFFF844B")
             {
                 badgedLike.BadgeBackground = Brushes.Gray;
+                (btn.FindName("icon") as PackIcon).Kind = PackIconKind.HeartOutline;
+                btn.Foreground = Brushes.Black;
                 badgedLike.Badge = 3;
             }
             else
             {
                 badgedLike.Badge = 4;
+                (btn.FindName("icon") as PackIcon).Kind = PackIconKind.Heart;
+                btn.Foreground = Brushes.Red;
                 badgedLike.BadgeBackground = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff844b");
             }
         }
@@ -88,6 +93,12 @@ namespace YourFitness.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnTrainterService_Click(object sender, RoutedEventArgs e)
+        {
+            TrainerWindow trainerWindow  = new TrainerWindow();
+            trainerWindow.Show();
         }
     }
 }

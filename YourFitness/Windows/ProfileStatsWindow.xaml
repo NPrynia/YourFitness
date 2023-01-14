@@ -11,9 +11,9 @@
         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
           xmlns:local="clr-namespace:YourFitness.Windows"
         WindowStartupLocation="CenterScreen"   FontFamily="Cascadia Mono Light"
-        Title="Ваша статистика" Height="800" Width="1250">
+        Title="Ваша статистика" Height="800" Width="1350">
     <Window.DataContext>
-        <local:ViewModel/>
+        <local:ViewModelForProfileStats/>
     </Window.DataContext>
 
     <Grid>
@@ -386,9 +386,8 @@
 
             </Border>
             </materialDesign:DialogHost>
+        
             <!--RightSide-->
-
-
             <Border Grid.Row="1"  Grid.Column="1"  Background="White" MinHeight="300"  MinWidth="550" Margin="20"
                  
                 CornerRadius="20"
