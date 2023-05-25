@@ -6,6 +6,8 @@ using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using YourFitness.ClassHelper;
+using System.Linq;
 
 namespace YourFitness.Windows
 {
@@ -14,17 +16,16 @@ namespace YourFitness.Windows
     {
         public ISeries[] SeriesWeak { get; set; } =
         {
+
             new ColumnSeries<double>
             {
-                Name = "Количество часов",
+                Name = "Количество минут",
                 DataLabelsSize = 20,
                 Stroke = null,
                 Fill = new SolidColorPaint(new SKColor(255, 132, 75)),
-                Values = new double[] { 1,0,2, 0, 2 ,1,0},
-                IgnoresBarPosition = true
+                Values =  GlobalParamClass.currentUser.StatsWorkout.Select(i => (double)i.qtyMinute).ToList(),
+                IgnoresBarPosition = false
             },
-
-
 
         };
 
@@ -32,7 +33,7 @@ namespace YourFitness.Windows
         {
             new Axis
             {
-                Labels = new string[] { "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" },
+                Labels = GlobalParamClass.currentUser.StatsWorkout.Select(i => i.day.ToString()).ToList(),
                 LabelsRotation = 5
             }
         };
@@ -40,19 +41,22 @@ namespace YourFitness.Windows
         public ViewModelForProfileStats()
         {
 
-            SeriesMuscle = new ISeries[]
+            List<ISeries> list = new List<ISeries>();
+            foreach (ModelEF.qtyHourOnMuscleForUser_Result i in GlobalParamClass.currentUser.StatsMuscle)
             {
-                 new PieSeries<double> { Values = new double[] { 10 }, Name = "Спина" ,TooltipLabelFormatter = point => "10 Часов"},
-                 new PieSeries<double> { Values = new double[] { 5 }, Name = "Грудь" ,TooltipLabelFormatter = point => $"5 Часов"},
-                 new PieSeries<double> { Values = new double[] { 3 }, Name = "Плечи" ,TooltipLabelFormatter = point => $"3 Часа"},
-                 new PieSeries<double> { Values = new double[] { 4 }, Name = "Руки"  ,TooltipLabelFormatter = point => $"4 Часв"},
-                 new PieSeries<double> { Values = new double[] { 6 }, Name = "Ноги" ,TooltipLabelFormatter = point => $"6 Часов"}
-            };
+                var temp2 = new PieSeries<double> { Values = new double[] { (double)i.TimeInMinute }, Name = i.name, TooltipLabelFormatter = point => $"{i.TimeInMinute} минут" };
 
 
+
+                list.Add(temp2);
+
+              
+            }
+            SeriesMuscle = list;
         }
-
+        
         public IEnumerable<ISeries> SeriesMuscle { get; set; }
+
     }
 
     public class ViewModelForWorkoutMuscle

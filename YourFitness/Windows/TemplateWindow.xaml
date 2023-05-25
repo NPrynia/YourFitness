@@ -5,111 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YourFitness.Windows" 
         xmlns:hc="https://handyorg.github.io/handycontrol"
-        mc:Ignorable="d" Background="Transparent"
-        FontFamily="Cascadia Mono Light"
+        mc:Ignorable="d"
+        FontFamily="Cascadia Mono Light" xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
-        Title="TemplateWindow" Height="1050" Width="1000">
-   
-    <Grid >
+        Title="TemplateWindow" Height="900" Width="1000">
 
-
-
-        <Border  Background="White" CornerRadius="20">
-
-            <StackPanel
-      Margin="16">
-                <TextBlock
-        Text="Найти упражнение" Margin="0 10" />
-                <ComboBox
-  materialDesign:HintAssist.Hint="Поиск"
-  materialDesign:HintAssist.HintOpacity=".26"
-  materialDesign:ComboBoxAssist.MaxLength="2"
-  IsEditable="True">
-                    <ComboBoxItem
-    Content="Приседания" />
-                    <ComboBoxItem
-    Content="Отжимания" />
-                    <ComboBoxItem
-    Content="Подтягивание" />
-                    <ComboBoxItem
-    Content="Планка" />
-                </ComboBox>
-
-                <StackPanel  Margin="0 10" Orientation="Horizontal">
-
-                    <TextBlock Text="Количество|Секунд :" VerticalAlignment="Center"/>
-                    <TextBox Text="" Width="30"/>
-
-                </StackPanel>
-
-                <StackPanel
-        Orientation="Horizontal"
-        HorizontalAlignment="Center">
-                    <Button
-          Style="{StaticResource MaterialDesignFlatButton}"
-          IsCancel="True"
-          Margin="0 8 8 0"
-          Content="Отмена"
-          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
-                    </Button>
-                    <Button
-          Style="{StaticResource MaterialDesignFlatButton}"
-          IsDefault="True"
-          Margin="0 8 8 0"
-          Content="Добавить"
-          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
-                    </Button>
-                   
-                </StackPanel>
-
-
-
-                <StackPanel Grid.Row="1" Margin="0 100 0 0">
-                    <TextBox  Text="dfg"
-                                Margin="0 30 0 20" MinWidth="650" 
-                              materialDesign:HintAssist.Hint="Название услуги"  
-                              TextWrapping="Wrap"
-                 FontSize="35"  />
-                    <TextBox  
-                                         MinWidth="850"
-                                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                            Text="{Binding description}"
-                                            materialDesign:HintAssist.Hint="Описание"
-                                     TextWrapping="Wrap"
-                 FontSize="30" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-
-                        <TextBlock Foreground="#ff844b"
-                                Margin="0 20 0 0" Text="Стоимость:"
-                                        TextWrapping="Wrap"
-                 FontSize="30" VerticalAlignment="Bottom" />
-                        <TextBox Foreground="#ff844b"
-                                Margin="0 20 0 0" materialDesign:HintAssist.Hint="Стоимость"
-                                        TextWrapping="Wrap"
-                 FontSize="30" Text="{Binding cost}" />
-
-                        <Button
-                                                             Name="btnDeleteService"
-                                             Height="33" Margin="40 0 0 0" Width="250" VerticalAlignment="Bottom"
-                                             Background="#ff844b" 
-                                             BorderBrush="#ff844b" 
-                                             Foreground="White"
-                                             Content="Удалить"
-                                             FontSize="20" >
-                            <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
-                        </Button>
-
-
-                    </StackPanel>
-
-
-                </StackPanel>
-            </StackPanel>
-
-        </Border>
-
-
+    <Grid  >
+       
 
     </Grid>
 </Window>

@@ -3,11 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:YourFitness.Windows" xmlns:hc="https://handyorg.github.io/handycontrol" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:gu="https://github.com/GuOrg/Gu.Wpf.FlipView"
+        xmlns:local="clr-namespace:YourFitness.Windows"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"    xmlns:gif="http://wpfanimatedgif.codeplex.com"
         FontFamily="Cascadia Mono Light"
         Title="WorkoutWindow" Height="1000" Width="1650"
-        Background="#f5f5f5"
+        Background="#f5f5f5"  WindowStyle="None" WindowStartupLocation="CenterScreen"
     xmlns:interactivity="clr-namespace:HandyControl.Interactivity;assembly=HandyControl">
     <Window.Resources>
         <ResourceDictionary>
@@ -36,6 +38,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
             <RowDefinition Height="370*"/>
             <RowDefinition Height="80*"/>
             <RowDefinition Height="70*"/>
@@ -45,66 +48,77 @@
             <ColumnDefinition Width="23*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Background="White" CornerRadius="20" Margin="10" Grid.Column="1" Grid.RowSpan="3">
+        <Border Background="White" CornerRadius="20" Margin="10" Grid.Column="1" Grid.Row="1" Grid.RowSpan="3">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="190*"/>
-                </Grid.RowDefinitions>
+                <ListView x:Name="lvExercise" HorizontalAlignment="Stretch"
+                              Grid.Row="1" Background="Transparent" BorderThickness="0"
+                             d:ItemsSource="{d:SampleData ItemCount=2}"
+                               ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  Style="{DynamicResource ListBoxBaseStyle}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate  >
+                            <StackPanel/>
+                        </ItemsPanelTemplate >
+                    </ListView.ItemsPanel >
 
-                <hc:ScrollViewer  >
-                    <StackPanel>
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="24*"/>
-                            </Grid.ColumnDefinitions>
-                            <ToggleButton
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+
+                                <StackPanel>
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*"/>
+                                        <ColumnDefinition Width="24*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ToggleButton
             VerticalAlignment="Center" x:Name="toggleBtn"
-             Width="40" Height="40"
+             Width="40" Height="40" Click="toggleBtn_Click"
+            IsChecked="False" 
             Style="{StaticResource MaterialDesignActionLightToggleButton}"
             Content="{materialDesign:PackIcon Kind=Close}"  />
-                            <TextBlock 
+                                    <TextBlock 
                                 Name="tbNameExerciseInProgress"
                                 Margin="8,0,0,0" Grid.Column="1" TextWrapping="Wrap" 
-                                       VerticalAlignment="Center" Text="Приседания" FontSize="30" HorizontalAlignment="Left" />
+                                       VerticalAlignment="Center" Text="{Binding Exercise.Name}" FontSize="22" HorizontalAlignment="Left" />
 
-                        </Grid>
-                        <Border Name="borderInProgressExercise" Height="3" Background="Black"/>
+                                </Grid>
+                                <Border Name="borderInProgressExercise" Height="3" Background="Black"/>
 
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="24*"/>
-                            </Grid.ColumnDefinitions>
-                            <ToggleButton
-            VerticalAlignment="Center"
-            IsChecked="{Binding IsSelected}" Width="40" Height="40"
-            Style="{StaticResource MaterialDesignActionLightToggleButton}"
-            Content="{materialDesign:PackIcon Kind=Close}"  />
-                            <TextBlock Margin="8,0,0,0" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="Грудь" FontSize="30" HorizontalAlignment="Left" />
+                            </StackPanel>
 
-                        </Grid>
+                                <Border   />
+                            </Grid>
 
-                        <Border x:Name="borderInProgressExercise2" Height="3" Background="Black"/>
-                        <Grid Margin="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="24*"/>
-                            </Grid.ColumnDefinitions>
-                            <ToggleButton
-            VerticalAlignment="Center"
-            IsChecked="{Binding IsSelected}" Width="40" Height="40"
-            Style="{StaticResource MaterialDesignActionLightToggleButton}"
-            Content="{materialDesign:PackIcon Kind=Close}"  />
-                            <TextBlock Margin="8,0,0,0" Grid.Column="1"  VerticalAlignment="Center" TextWrapping="Wrap" 
-                                       Text="Плечиfffffffffffff" FontSize="30" HorizontalAlignment="Left" />
 
-                        </Grid>
-                        <Border Height="3" Background="Black"/>
-                    </StackPanel>
+                            <DataTemplate.Triggers>
 
-                </hc:ScrollViewer>
+                                <DataTrigger Binding="{Binding  Complete,  TargetNullValue={x:Null}}" Value="True">
+                                    <Setter TargetName="toggleBtn" Property="IsChecked" Value="True" />
+                                    <Setter TargetName="tbNameExerciseInProgress" Property="TextBlock.Foreground" Value="#ff844b" />
+                                    <Setter TargetName="borderInProgressExercise" Property="Grid.Background" Value="#ff844b" />
+                                </DataTrigger>
+
+
+                                
+
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
 
 
 
@@ -115,7 +129,43 @@
 
 
 
-        <Image gif:ImageBehavior.AnimatedSource="D:\exercise\pullUp.gif" />
+        <materialDesign:Transitioner Name="mainTransitioner" Grid.Row="1" SelectedIndex="0">
+
+            <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+              
+                <Image x:Name="imgExercise"  gif:ImageBehavior.AnimatedSource="{Binding imgUri}" />
+
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:SlideOutWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+
+                <Grid>
+                    <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <TextBlock   FontSize="100" Text="Отдых" />
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Name="tbTimerMin"  FontSize="100" Text="00" FontFamily="Gadugi" />
+                            <TextBlock   FontSize="100" Text=":" FontFamily="Gadugi" />
+                            <TextBlock  Name="tbTimerSec" FontSize="100" Text="30" FontFamily="Gadugi" />
+                            <!--<Button
+                                 Width="80" Height="80"
+                                 Style="{StaticResource MaterialDesignIconButton}"
+                                 ToolTip="Добавить 10 секунд">
+                                <materialDesign:PackIcon 
+                                   Kind="Plus"   Width="80" Height="80"  />
+                            </Button>-->
+
+                        </StackPanel>
+                       
+                    </StackPanel>
+                   
+                </Grid>
+
+            </materialDesign:TransitionerSlide>
+
+        </materialDesign:Transitioner>
+        
         <!--<hc:GifImage >
             <hc:GifImage.Source>
                 <BitmapImage UriSource="D:\exercise\pullUp.gif"/>
@@ -127,7 +177,8 @@
 
 
 
-        <materialDesign:DrawerHost x:Name="DrawerHost"  DrawerClosing="DrawerHost_DrawerClosing"
+
+        <materialDesign:DrawerHost x:Name="DrawerHost" Grid.Row="1"  DrawerClosing="DrawerHost_DrawerClosing"
                                  BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  BottomDrawerBackground="Transparent" Cursor="" >
             <materialDesign:DrawerHost.Style>
@@ -141,12 +192,11 @@
             </materialDesign:DrawerHost.Style>
 
 
-            <materialDesign:DrawerHost.BottomDrawerContent>
-                <Border Height="500" Margin="20 0 20 0" Background="White" CornerRadius="20 20 0 0">
+            <materialDesign:DrawerHost.BottomDrawerContent >
+                <Border  Height="500" Margin="20 0 20 0" Background="White" CornerRadius="20 20 0 0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60*"/>
-                            <RowDefinition Height="72*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="877*"/>
@@ -164,7 +214,7 @@
                             <TextBlock 
                        Margin="0 5 0 0"       
                     FontSize="28" TextWrapping="Wrap"
-                    Text="грудь, спина, руки" 
+                    Text="грудь, спина, руки" Name="tbMoreInfoExerciseMuscleTypeExercise"
                     
                     />
 
@@ -174,7 +224,7 @@
                             <TextBlock 
                               
                     FontSize="33" TextWrapping="Wrap" HorizontalAlignment="Center"
-                    Text="Отжимания" 
+                    Text="Отжимания" Name="tbMoreInfoExerciseName"
                     
                     />
                             <TextBlock 
@@ -184,96 +234,13 @@
                     
                     />
                             <TextBlock 
-                       Margin="0 5 0 0"       
+                       Margin="0 5 0 0"  Name="tbMoreInfoExerciseDescription"     
                     FontSize="28" TextWrapping="Wrap"
                     Text="ОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасние" 
                     
                     />
 
                         </StackPanel>
-                        <hc:ScrollViewer Grid.Row="1" Margin="20 0 0 0"  >
-                            <StackPanel >
-                                <Expander        BorderThickness="0" >
-                                    <Expander.Header>
-                                        <TextBlock 
-                      Margin="-23.8 0 0 0"              
-                    FontSize="33" TextWrapping="Wrap"
-                    Text="Шаг 1:" 
-                    />
-                                    </Expander.Header>
-                                    <TextBlock
-                                    FontSize="20" TextWrapping="Wrap"
-                                    Text="Описание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиага"
-                                    />
-
-                                </Expander>
-
-                                <Expander Margin="0 10 0 0"        BorderThickness="0" >
-                                    <Expander.Header>
-                                        <TextBlock 
-                      Margin="-23.8 0 0 0"              
-                    FontSize="33" TextWrapping="Wrap"
-                    Text="Шаг 2:" 
-                    />
-                                    </Expander.Header>
-                                    <TextBlock
-                                    FontSize="20" TextWrapping="Wrap"
-                                    Text="Описание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиага"
-                                    />
-
-                                </Expander>
-
-                                <Expander Margin="0 10 0 0"        BorderThickness="0" >
-                                    <Expander.Header>
-                                        <TextBlock 
-                      Margin="-23.8 0 0 0"              
-                    FontSize="33" TextWrapping="Wrap"
-                    Text="Шаг 3:" 
-                    />
-                                    </Expander.Header>
-                                    <TextBlock
-                                    FontSize="20" TextWrapping="Wrap"
-                                    Text="Описание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиага"
-                                    />
-
-                                </Expander>
-                                <Expander Margin="0 10 0 0"        BorderThickness="0" >
-                                    <Expander.Header>
-                                        <TextBlock 
-                      Margin="-23.8 0 0 0"              
-                    FontSize="33" TextWrapping="Wrap"
-                    Text="Шаг 4:" 
-                    />
-                                    </Expander.Header>
-                                    <TextBlock
-                                    FontSize="20" TextWrapping="Wrap"
-                                    Text="Описание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиага"
-                                    />
-
-                                </Expander>
-                                <Expander Margin="0 10 0 0"        BorderThickness="0" >
-                                    <Expander.Header>
-                                        <TextBlock 
-                      Margin="-23.8 0 0 0"              
-                    FontSize="33" TextWrapping="Wrap"
-                    Text="Шаг 5:" 
-                    />
-                                    </Expander.Header>
-                                    <TextBlock
-                                    FontSize="20" TextWrapping="Wrap"
-                                    Text="Описание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиагаОписание шага описание шиага"
-                                    />
-
-                                </Expander>
-
-
-                            </StackPanel>
-                        </hc:ScrollViewer>
-
-
-
-
-
                     </Grid>
                 </Border>
             </materialDesign:DrawerHost.BottomDrawerContent>
@@ -288,7 +255,7 @@
 
 
 
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Name="spInfoQtyExer" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
 
             <TextBlock x:Name="tbNameExercise"  Cursor="Hand" MouseLeftButtonUp="tbNameExercise_MouseLeftButtonUp" Text="Отжимания"  
                        
@@ -317,11 +284,11 @@
             </TextBlock>
             <Border Height="1" Width="0"  Name="borderUnderTextTwo" Background="Gray"/>
             <Border Height="1" Width="auto" Name="borderUnderText" Background="Gray"/>
-            <TextBlock Text="X15" HorizontalAlignment="Center" FontSize="40"/>
+            <TextBlock x:Name="tbQtyExercise" Text="X15" HorizontalAlignment="Center" FontSize="40"/>
         </StackPanel>
 
 
-        <Grid   Grid.Row="2">
+        <Grid   Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -329,6 +296,7 @@
 
             <Button
                 Foreground="Black"
+                Name="btnBack" Click="btnBack_Click"
                 Background="Transparent"
                 BorderThickness="0"
                 Margin="10" Height="60"
@@ -350,6 +318,7 @@
                 FontSize="30" Cursor="Hand" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock 
+                        x:Name="tbbtnNext"
                                  VerticalAlignment="Center"
                                  Text="Следующие" />
 
@@ -357,7 +326,7 @@
                 </StackPanel>
             </Button>
 
-            <ProgressBar x:Name="progressBar"
+            <ProgressBar x:Name="progressBar" 
    Grid.ColumnSpan="2" BorderThickness="0" VerticalAlignment="Bottom"
   Height="10" Background="Transparent" Foreground="#ff844b"
                 
@@ -365,6 +334,60 @@
 
 
         </Grid>
+
+
+
+        <Border 
+            Height="40"
+           Background="Transparent" Grid.ColumnSpan="2" VerticalAlignment="Top" Name="topBorder"
+            
+            MouseLeftButtonDown="topBorder_MouseLeftButtonDown"  >
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
+
+                <Button 
+          x:Name="MinButton" 
+                    Click="MinimizeButton_Click"
+                Height="45" Width="45" Background="Transparent"  BorderThickness="0" Cursor="Hand">
+                    <materialDesign:PackIcon
+                Kind="WindowMinimize" Foreground="#FF494949" 
+                HorizontalAlignment="Center" >
+                    </materialDesign:PackIcon>
+
+
+                </Button>
+
+                <Button 
+                            x:Name="MaxButton" 
+                    Click="MaximizeButton_Click"
+                Height="45" Width="45" Background="Transparent"  BorderThickness="0" Cursor="Hand">
+                    <materialDesign:PackIcon
+                Kind="DockWindow" Foreground="#FF494949" 
+                HorizontalAlignment="Center" >
+                    </materialDesign:PackIcon>
+
+
+                </Button>
+                <Button 
+                        Click="exitBtn_Click" Name="exitBtn"     
+                Height="45" Width="45" Background="Transparent"  BorderThickness="0" Cursor="Hand">
+                    <materialDesign:PackIcon
+                Kind="WindowClose" Foreground="#FF494949" 
+                HorizontalAlignment="Center" >
+                    </materialDesign:PackIcon>
+
+
+                </Button>
+
+
+
+
+
+
+            </StackPanel>
+
+
+        </Border>
 
 
 

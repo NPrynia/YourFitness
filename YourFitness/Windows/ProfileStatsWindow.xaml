@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      
+       ResizeMode="CanResize"  WindowStyle="None" AllowsTransparency="True"
           Background="#f5f5f5"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
@@ -37,7 +37,7 @@
 
             <!--LeftSide-->
             <materialDesign:DialogHost
-            CloseOnClickAway="True"
+            CloseOnClickAway="True" Name="dialogHost" 
             Grid.Row="1" Grid.RowSpan="2"
             DialogTheme="Inherit">
                 <!--DIalogCOntet-->
@@ -53,8 +53,8 @@
 
 
                             <DatePicker
-  Foreground="Black" Height="40" FontSize="12" Width="140"
-  materialDesign:HintAssist.Hint="Выберите дату " DisplayDate="05.12.2022"  SelectedDate="05.12.2022"
+  Foreground="Black" Height="40" FontSize="12" Width="140" Name="dpDateChange"
+  materialDesign:HintAssist.Hint="Выберите дату " SelectedDate="05.01.2023"   DisplayDate="05.01.2023" 
   materialDesign:TextFieldAssist.HasClearButton="True" HorizontalAlignment="Left" Margin="20 0 0 0"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" BorderBrush="Black" />
 
@@ -65,12 +65,12 @@
 
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Вес: " VerticalAlignment="Bottom" FontSize="20" />
-                                    <TextBox Text="" Width="20" VerticalAlignment="Bottom" FontSize="20" />
+                                <TextBox Name="tbWeitght" Text="25" Width="30" VerticalAlignment="Bottom" FontSize="20" />
                                     <TextBlock Text=" кг" VerticalAlignment="Bottom" FontSize="16" />
 
 
                                     <TextBlock Text="Рост: " VerticalAlignment="Bottom" FontSize="20" Margin="25 0 0 0" />
-                                    <TextBox Text="" Width="35" VerticalAlignment="Bottom" FontSize="20" />
+                                    <TextBox Name="tbHeight" Text="" Width="35" VerticalAlignment="Bottom" FontSize="20" />
                                     <TextBlock Text=" см" VerticalAlignment="Bottom" FontSize="16" />
 
 
@@ -145,7 +145,7 @@
                                 </Button>
 
                                 <Button 
-                                              x:Name="btnSave"
+                                              x:Name="btnSave" Click="btnSave_Click"
                                                 Grid.Column="1"
                                               Width="130" Height="28"
                                               Background="#ff844b"
@@ -186,177 +186,116 @@
                             <TextBlock Text="Замеры" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="30" />
 
-                            <StackPanel Grid.Row="1">
-                                <Border Margin="0 10 0 0"  VerticalAlignment="Top" >
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Text="05.12.2022" HorizontalAlignment="Left"
+                            <ListView Grid.Row="1" 
+                                                                                  Background="Transparent" 
+                                                                                  BorderThickness="0"
+Name="lvHistoryChange"
+                                                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                                    Style="{DynamicResource ListBoxBaseStyle}"
+                                                                                  >
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate  >
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate >
+                                </ListView.ItemsPanel >
+                                <ListView.ItemTemplate  >
+                                    <DataTemplate >
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="{Binding DataChange,StringFormat='{}{0:dd.MM.yyyy}'}" HorizontalAlignment="Left"
                                        Margin="5" Foreground="Gray"
                                        VerticalAlignment="Center" 
                            FontSize="15" />
-                                        <StackPanel  Grid.Row="1" VerticalAlignment="Top"
+                                            <StackPanel  Grid.Row="1" VerticalAlignment="Top"
                                         Margin="5">
 
 
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="Вес:" VerticalAlignment="Bottom" FontSize="20" />
-                                                <TextBlock Text="67" VerticalAlignment="Bottom" FontSize="20" />
-                                                <TextBlock Text="кг" VerticalAlignment="Bottom" FontSize="16" />
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Вес:" VerticalAlignment="Bottom" FontSize="20" />
+                                                    <TextBlock Text="{Binding NewWeitght}" VerticalAlignment="Bottom" FontSize="20" />
+                                                    <TextBlock Text="кг" VerticalAlignment="Bottom" FontSize="16" />
 
 
-                                                <TextBlock Text="Рост:" VerticalAlignment="Bottom" FontSize="20" Margin="25 0 0 0" />
-                                                <TextBlock Text="182" VerticalAlignment="Bottom" FontSize="20" />
-                                                <TextBlock Text="см" VerticalAlignment="Bottom" FontSize="16" />
+                                                    <TextBlock Text="Рост:" VerticalAlignment="Bottom" FontSize="20" Margin="25 0 0 0" />
+                                                    <TextBlock Text="{Binding NewHeight}" VerticalAlignment="Bottom" FontSize="20" />
+                                                    <TextBlock Text="см" VerticalAlignment="Bottom" FontSize="16" />
+
+
+
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
+                                                    <Image  Width="190" >
+                                                        <Image.Source>
+                                                            <Binding Path="ImageFront">
+                                                                <!--<Binding.TargetNullValue>
+                                                                    <ImageSource>/Res/FrontMan.png</ImageSource>
+                                                                </Binding.TargetNullValue>-->
+                                                            </Binding>
+                                                        </Image.Source>
+
+                                                    </Image>
+                                                    <Image  Width="190" >
+                                                        <Image.Source>
+                                                            <Binding Path="ImageBack">
+                                                                <!--<Binding.TargetNullValue>
+                                                                    <ImageSource>/Res/FrontMan.png</ImageSource>
+                                                                </Binding.TargetNullValue>-->
+                                                            </Binding>
+                                                        </Image.Source>
+                                                    </Image>
+                                                    <Image  Width="190" >
+                                                        <Image.Source>
+                                                            <Binding Path="ImageBack">
+                                                                <!--<Binding.TargetNullValue>
+                                                                    <ImageSource>/Res/FrontMan.png</ImageSource>
+                                                                </Binding.TargetNullValue>-->
+                                                            </Binding>
+                                                        </Image.Source>
+                                                    </Image>
+
+                                                </StackPanel>
 
 
 
                                             </StackPanel>
-
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
-                                                <Image Source="/Res/FrontMan.png" Width="190" />
-                                                <Image Source="/Res/BackMan.png" Width="190" />
-                                                <Image Source="/Res/SideMan.png" Width="190" />
-
-                                            </StackPanel>
+                                            <Border Background="Gray" Grid.Row="1" Height="1" VerticalAlignment="Bottom"/>
 
 
 
-                                        </StackPanel>
-                                        <Border Background="Gray" Grid.Row="1" Height="1" VerticalAlignment="Bottom"/>
-
-
-
-                                    </Grid>
-                                </Border>
-                                 <Border Margin="0 10 0 0"  VerticalAlignment="Top" >
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="05.12.2022" HorizontalAlignment="Left"
-                                       Margin="5" Foreground="Gray"
-                                       VerticalAlignment="Center" 
-                           FontSize="15" />
-                                    <StackPanel  Grid.Row="1" VerticalAlignment="Top"
-                                        Margin="5">
-
-
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Вес:" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="67" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="кг" VerticalAlignment="Bottom" FontSize="16" />
-
-
-                                            <TextBlock Text="Рост:" VerticalAlignment="Bottom" FontSize="20" Margin="25 0 0 0" />
-                                            <TextBlock Text="182" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="см" VerticalAlignment="Bottom" FontSize="16" />
-
-
-
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
-                                            <Image Source="/Res/FrontMan.png" Width="190" />
-                                            <Image Source="/Res/BackMan.png" Width="190" />
-                                            <Image Source="/Res/SideMan.png" Width="190" />
-
-                                        </StackPanel>
-
-
-
-                                    </StackPanel>
-                                    <Border Background="Gray" Grid.Row="1" Height="1" VerticalAlignment="Bottom"/>
-
-
-
-                                </Grid>
-                            </Border>
-                            <Border Margin="0 10 0 0"  VerticalAlignment="Top" >
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="05.12.2022" HorizontalAlignment="Left"
-                                       Margin="5" Foreground="Gray"
-                                       VerticalAlignment="Center" 
-                           FontSize="15" />
-                                    <StackPanel  Grid.Row="1" VerticalAlignment="Top"
-                                        Margin="5">
-
-
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="Вес:" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="67" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="кг" VerticalAlignment="Bottom" FontSize="16" />
-
-
-                                            <TextBlock Text="Рост:" VerticalAlignment="Bottom" FontSize="20" Margin="25 0 0 0" />
-                                            <TextBlock Text="182" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="см" VerticalAlignment="Bottom" FontSize="16" />
-
-
-
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 5 0 0">
-                                            <Image Source="/Res/FrontMan.png" Width="190" />
-                                            <Image Source="/Res/BackMan.png" Width="190" />
-                                            <Image Source="/Res/SideMan.png" Width="190" />
-
-                                        </StackPanel>
-
-
-
-                                    </StackPanel>
-                                    <Border Background="Gray" Grid.Row="1" Height="1" VerticalAlignment="Bottom"/>
-
-
-
-                                </Grid>
-                            </Border>
-
-                            <Border Grid.Row="1" Margin="0 10 0 0"  VerticalAlignment="Top" >
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Text="05.12.2022" HorizontalAlignment="Left"
-                                       Margin="5" Foreground="Gray"
-                                       VerticalAlignment="Center" 
-                           FontSize="15" />
-
-                                        <StackPanel Orientation="Horizontal" 
-                                        Grid.Row="1" VerticalAlignment="Top"
-                                        Margin="5">
-                                            <TextBlock Text="Вес:" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="67" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="кг" VerticalAlignment="Bottom" FontSize="16" />
-
-
-                                            <TextBlock Text="Рост:" VerticalAlignment="Bottom" FontSize="20" Margin="25 0 0 0" />
-                                            <TextBlock Text="182" VerticalAlignment="Bottom" FontSize="20" />
-                                            <TextBlock Text="см" VerticalAlignment="Bottom" FontSize="16" />
-
-
-                                        </StackPanel>
+                                        </Grid>
 
 
 
 
 
-                                        <Border Background="Gray" Grid.Row="1" Height="1" VerticalAlignment="Bottom"/>
+                                        <DataTemplate.Triggers>
 
 
 
-                                    </Grid>
-                                </Border>
-                            </StackPanel>
+                                        </DataTemplate.Triggers>
+
+                                    </DataTemplate>
+
+                                </ListView.ItemTemplate>
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                    <ContentPresenter />
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+
+                            </ListView>
 
 
 
@@ -434,6 +373,58 @@
 
         </Border>
 
+
+
+        <Border  
+            Height="40" Grid.Column="1"
+           Background="Transparent" VerticalAlignment="Top" Name="topBorder" 
+            MouseLeftButtonDown="topBorder_MouseLeftButtonDown"  >
+
+            <StackPanel HorizontalAlignment="Right"  Orientation="Horizontal" >
+
+                <Button 
+          x:Name="MinButton" 
+                    Click="MinimizeButton_Click"
+                Height="45" Width="45" Background="Transparent"  BorderThickness="0" Cursor="Hand">
+                    <materialDesign:PackIcon
+                Kind="WindowMinimize" Foreground="#FF494949" 
+                HorizontalAlignment="Center" >
+                    </materialDesign:PackIcon>
+
+
+                </Button>
+
+                <Button 
+                            x:Name="MaxButton" 
+                    Click="MaximizeButton_Click"
+                Height="45" Width="45" Background="Transparent"  BorderThickness="0" Cursor="Hand">
+                    <materialDesign:PackIcon
+                Kind="DockWindow" Foreground="#FF494949" 
+                HorizontalAlignment="Center" >
+                    </materialDesign:PackIcon>
+
+
+                </Button>
+                <Button 
+                        Click="exitBtn_Click" Name="exitBtn"     
+                Height="45" Width="45" Background="Transparent"  BorderThickness="0" Cursor="Hand">
+                    <materialDesign:PackIcon
+                Kind="WindowClose" Foreground="#FF494949" 
+                HorizontalAlignment="Center" >
+                    </materialDesign:PackIcon>
+
+
+                </Button>
+
+
+
+
+
+
+            </StackPanel>
+
+
+        </Border>
 
 
 

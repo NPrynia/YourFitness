@@ -15,12 +15,16 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Center">
+            <hc:ButtonGroup>
+               
+            </hc:ButtonGroup>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel>
                     <UniformGrid Name="ug1" >
                         <hc:TransitioningContentControl TransitionMode="Left2RightWithFade"  VerticalAlignment="Center" Margin="50">
                             <Button 
-                Height="50" 
+                Height="50" Name="btn1"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -36,7 +40,7 @@
                     <UniformGrid Name="ug2" >
                         <hc:TransitioningContentControl TransitionMode="Left2RightWithFade" VerticalAlignment="Center" Margin="50">
                             <Button 
-                Height="50" 
+                Height="50" Name="btn2"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -57,7 +61,7 @@
                     <UniformGrid Name="ug4" >
                         <hc:TransitioningContentControl TransitionMode="Right2LeftWithFade" VerticalAlignment="Center" Margin="50">
                             <Button 
-                Height="50" 
+                Height="50" Name="btn3"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -72,7 +76,7 @@
                     <UniformGrid Name="ug5">
                         <hc:TransitioningContentControl TransitionMode="Right2LeftWithFade" VerticalAlignment="Center" Margin="50">
                             <Button 
-                Height="50" 
+                Height="50" Name="btn4"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"

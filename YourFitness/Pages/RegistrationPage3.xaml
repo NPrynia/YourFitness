@@ -25,6 +25,7 @@
                 BorderBrush="Gray"
                 Foreground="Gray"
                 Click="Button_Click"
+                x:Name="btn1"
                 Content="2-3"
                 FontSize="20" Cursor="Hand">
                                 <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
@@ -41,7 +42,7 @@
                 BorderBrush="Gray"
                 Foreground="Gray"
                  Click="Button_Click"
-                Content="3-4"
+                Content="3-4" x:Name="btn2"
                 FontSize="20" Cursor="Hand">
                                 <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
                             </Button>
@@ -61,7 +62,7 @@
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
-                Click="Button_Click"
+                Click="Button_Click"  x:Name="btn3"
                 Content="4-5"
                 FontSize="20" Cursor="Hand">
                                 <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
@@ -76,7 +77,7 @@
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
-                Click="Button_Click"
+                Click="Button_Click"  x:Name="btn4"
                 Content="5+"
                 FontSize="20" Cursor="Hand">
                                 <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
@@ -100,7 +101,7 @@
                 Margin="0 40 0 40 "
                 BorderBrush="#ff844b"
                 Foreground="White"
-                Content="Продолжить"
+                Content="Пропустить"
                 FontSize="20" Cursor="Hand">
                 <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
             </Button>

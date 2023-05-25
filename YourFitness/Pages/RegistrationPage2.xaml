@@ -20,7 +20,7 @@
                     <UniformGrid Name="ug1" >
                         <hc:TransitioningContentControl TransitionMode="Top2BottomWithFade"  VerticalAlignment="Center" Margin="50">
                             <Button 
-                Height="50"
+                Height="50" Name="btn1"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -36,7 +36,7 @@
                     <UniformGrid Name="ug2" >
                         <hc:TransitioningContentControl TransitionMode="Left2RightWithFade" VerticalAlignment="Center" Margin="50">
                             <Button 
-                Height="50"
+                Height="50" Name="btn2"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -52,7 +52,7 @@
                     <UniformGrid Name="ug3"  >
                         <hc:TransitioningContentControl  TransitionMode="Bottom2TopWithFade" VerticalAlignment="Center" Margin="50">
                             <Button 
-                Height="50"
+                Height="50" Name="btn3"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -72,7 +72,7 @@
                         <hc:TransitioningContentControl TransitionMode="Top2BottomWithFade" VerticalAlignment="Center" Margin="50">
                             <Button 
                 Height="50"
-                Width="250"
+                Width="250" Name="btn4"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -88,7 +88,7 @@
                         <hc:TransitioningContentControl TransitionMode="Right2LeftWithFade" VerticalAlignment="Center" Margin="50">
                             <Button 
                 Height="50"
-                Width="250"
+                Width="250" Name="btn5"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -104,7 +104,7 @@
                     <UniformGrid Name="ug6">
                         <hc:TransitioningContentControl TransitionMode="Bottom2TopWithFade" VerticalAlignment="Center" Margin="50">
                             <Button 
-                Height="50"
+                Height="50" Name="btn6"
                 Background="White"
                 BorderBrush="Gray"
                 Foreground="Gray"
@@ -133,7 +133,7 @@
                 Margin="0 40 0 40 "
                 BorderBrush="#ff844b"
                 Foreground="White"
-                Content="Продолжить"
+                Content="Пропустить"
                 FontSize="20" Cursor="Hand">
                 <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
             </Button>

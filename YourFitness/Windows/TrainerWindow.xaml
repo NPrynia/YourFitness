@@ -18,226 +18,136 @@
                 </Grid.RowDefinitions>
                 <!--RightBackground-->
                 <Border Margin="20,20,20,20" Background="#f5f5f5" CornerRadius="20" Grid.Column="2">
-                    <Grid>
-                        <StackPanel Margin="0 20 0 0">
-
-
-                            <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal">
-                                
-                            <TextBlock  FontSize="45" Text="Отзывы:" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center"/>
-                            <materialDesign:RatingBar 
-                                                                 Grid.Row="1"  VerticalAlignment="Center"
-                                                                 Value="4.5" HorizontalAlignment="Center" 
-                                                                 IsReadOnly="True" >
-                                <materialDesign:RatingBar.LayoutTransform>
-                                    <ScaleTransform ScaleX="1.3" ScaleY="1.3"></ScaleTransform>
-                                </materialDesign:RatingBar.LayoutTransform>
-
-                            </materialDesign:RatingBar>
-
-                            </StackPanel>
-                            <materialDesign:DialogHost DialogTheme="Inherit"  CloseOnClickAway="True"  >
-                                <materialDesign:DialogHost.DialogContent>
-                                    <StackPanel MaxWidth="450" MaxHeight="400" Margin="16">
-                                        <materialDesign:RatingBar 
+                    <materialDesign:DialogHost DialogTheme="Inherit"  CloseOnClickAway="True"  >
+                        <materialDesign:DialogHost.DialogContent>
+                            <StackPanel MaxWidth="450" MaxHeight="400" Margin="16">
+                                <materialDesign:RatingBar Name="rbReview"
                                                                  Grid.Row="1" Height="23" VerticalAlignment="Top"
                                                                  HorizontalAlignment="Left"  Margin="0 8 0 0" />
-                                        <TextBox
+                                <TextBox
         Margin="0 8 0 0" TextWrapping="Wrap"
         HorizontalAlignment="Stretch"
-        x:Name="FruitTextBox" />
-                                        <StackPanel
+        x:Name="tbReview" />
+                                <StackPanel
         Orientation="Horizontal"
         HorizontalAlignment="Right">
-                                            <Button
+                                    <Button
           Style="{StaticResource MaterialDesignFlatButton}"
           IsDefault="True"
           Margin="0 8 8 0"
-          Content="Удалить"
-          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
-                                                <Button.CommandParameter>
-                                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
-                                                        True
-                                                    </system:Boolean>
-                                                </Button.CommandParameter>
-                                            </Button>
-                                            <Button
+          Content="Удалить" Name="dtnDelete" Click="dtnDelete_Click">
+                                        <Button.CommandParameter>
+                                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                                True
+                                            </system:Boolean>
+                                        </Button.CommandParameter>
+                                    </Button>
+                                    <Button
           Style="{StaticResource MaterialDesignFlatButton}"
           IsCancel="True"
-          Margin="0 8 8 0"
-          Content="Отправить"
-          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
-                                                <Button.CommandParameter>
-                                                    <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
-                                                        False
-                                                    </system:Boolean>
-                                                </Button.CommandParameter>
-                                            </Button>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </materialDesign:DialogHost.DialogContent>
+          Margin="0 8 8 0" 
+          Content="Отправить" Name="btnSent" Click="btnSent_Click">
+                                        <Button.CommandParameter>
+                                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                                False
+                                            </system:Boolean>
+                                        </Button.CommandParameter>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </materialDesign:DialogHost.DialogContent>
+
+                        <Grid>
+                            <StackPanel Margin="10 20 0 0">
+                                <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal">
+
+                                    <TextBlock  FontSize="45" Text="Отзывы:" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                                    <materialDesign:RatingBar Name="rbAvgRating" 
+                                                                 Grid.Row="1"  VerticalAlignment="Center"
+                                                                 Value="4.5" HorizontalAlignment="Center" 
+                                                                 IsReadOnly="True" >
+                                        <materialDesign:RatingBar.LayoutTransform>
+                                            <ScaleTransform ScaleX="1.3" ScaleY="1.3"></ScaleTransform>
+                                        </materialDesign:RatingBar.LayoutTransform>
+
+                                    </materialDesign:RatingBar>
+
+                                </StackPanel>
+
+
                                 <hc:ScrollViewer >
-                                <Border  MaxHeight="600" CornerRadius="20">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="62*"/>
-                                            <RowDefinition Height="10*"/>
-                                        </Grid.RowDefinitions>
+                                    <Border  MaxHeight="600" CornerRadius="20">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="62*"/>
+                                                <RowDefinition Height="10*"/>
+                                            </Grid.RowDefinitions>
 
-                                        <hc:ScrollViewer>
+                                            <ListView
+                                                                                  Background="Transparent" Margin="0 30 0 0"
+                                                                                  BorderThickness="0"  d:ItemsSource="{d:SampleData ItemCount=2}"
+                                                                                  Name="lvReaction"
+                                                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                                    Style="{DynamicResource ListBoxBaseStyle}"
+                                                                                  >
+                                                <ListView.ItemsPanel>
+                                                    <ItemsPanelTemplate  >
+                                                        <StackPanel/>
+                                                    </ItemsPanelTemplate >
+                                                </ListView.ItemsPanel >
+                                                <ListView.ItemTemplate  >
+                                                    <DataTemplate >
+                                                        <Border>
 
-                                            <StackPanel >
-                                                <Border>
-
-                                                    <Grid>
-                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="60" Height="60" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                            <StackPanel   Margin="10 0" VerticalAlignment="Center">
-
-                                                                <TextBlock Text="Surname Fname"  FontSize="20"/>
-                                                                <TextBlock Text="Вау.Оч1111111111111111ень кру комментарий 2" FontSize="13" TextWrapping="Wrap" MaxWidth="330" Margin="0 10 0 0"/>
-                                                            </StackPanel>
-
-                                                        </StackPanel>
+                                                            <Grid>
 
 
+                                                                <Grid>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="20*"/>
+                                                                        <RowDefinition Height="7*"/>
+                                                                    </Grid.RowDefinitions>
 
-                                                        <materialDesign:RatingBar 
-                                                                 Grid.Row="1" Height="23" VerticalAlignment="Top"
-                                                                 Value="4.5" HorizontalAlignment="Right"  Margin="20"
+
+                                                                    <Grid>
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="80*"/>
+                                                                            <ColumnDefinition Width="375*"/>
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Border CornerRadius="220"  HorizontalAlignment="Left" BorderThickness="0"  Width="50" Height="50" >
+                                                                            <Border.Background>
+                                                                                <ImageBrush ImageSource="{Binding User1.ImageProfile, TargetNullValue={x:Null}}" Stretch="Fill"  />
+                                                                            </Border.Background>
+
+                                                                            <hc:Gravatar  HorizontalAlignment="Left" x:Name="gravatarInLvNewsCommentsWorkoutSocial"
+                                                                                  Width="50" Height="50" Visibility="Hidden"  Id="{Binding User1.Login}" 
+                                                                                          BorderThickness="0.6" BorderBrush="#333333"
+                                                                            Style="{StaticResource GravatarCircle}">
+                                                                            </hc:Gravatar>
+                                                                        </Border>
+
+
+                                                                        <StackPanel Grid.Column="1"   Margin="10 0" VerticalAlignment="Center">
+
+                                                                            <TextBlock Text="{Binding User1.FIO}" TextWrapping="Wrap"  HorizontalAlignment="Left" FontSize="13"  />
+                                                                            <!--<TextBlock Text="{Binding TimeSent ,StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"
+                                                                       HorizontalAlignment="left" Margin="0 3 0 0"
+                                                                       Grid.Column="1" VerticalAlignment="Top"  Foreground="Gray"/>-->
+                                                                            <materialDesign:RatingBar  VerticalAlignment="Top"
+                                                                 Value="{Binding Rating}" HorizontalAlignment="left"  Margin="0 5 0 0"
                                                                  IsReadOnly="True" >
-                                                            <materialDesign:RatingBar.LayoutTransform>
-                                                                <ScaleTransform ScaleX="0.6" ScaleY=".6"></ScaleTransform>
-                                                            </materialDesign:RatingBar.LayoutTransform>
+                                                                                <materialDesign:RatingBar.LayoutTransform>
+                                                                                    <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
+                                                                                </materialDesign:RatingBar.LayoutTransform>
 
-                                                        </materialDesign:RatingBar>
-                                                    </Grid>
-
-                                                </Border>
-
-
-                                                <Border>
-
-                                                    <Grid>
-                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="60" Height="60" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                            <StackPanel   Margin="10 0" VerticalAlignment="Center">
-
-                                                                <TextBlock Text="Surname Fname"  FontSize="20"/>
-                                                                <TextBlock Text="Вау.Оч1111111111111111ень кру комментарий 2" FontSize="13" TextWrapping="Wrap" MaxWidth="330" Margin="0 10 0 0"/>
-                                                            </StackPanel>
-
-                                                        </StackPanel>
+                                                                            </materialDesign:RatingBar>
+                                                                        </StackPanel>
 
 
 
-                                                        <materialDesign:RatingBar 
-                                                                 Grid.Row="1" Height="23" VerticalAlignment="Top"
-                                                                 Value="4.5" HorizontalAlignment="Right"  Margin="20"
-                                                                 IsReadOnly="True" >
-                                                            <materialDesign:RatingBar.LayoutTransform>
-                                                                <ScaleTransform ScaleX="0.6" ScaleY=".6"></ScaleTransform>
-                                                            </materialDesign:RatingBar.LayoutTransform>
-
-                                                        </materialDesign:RatingBar>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border>
-
-                                                    <Grid>
-                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="60" Height="60" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                            <StackPanel   Margin="10 0" VerticalAlignment="Center">
-
-                                                                <TextBlock Text="Surname Fname"  FontSize="20"/>
-                                                                <TextBlock Text="Вау.Оч1111111111111111ень кру комментарий 2" FontSize="13" TextWrapping="Wrap" MaxWidth="330" Margin="0 10 0 0"/>
-                                                            </StackPanel>
-
-                                                        </StackPanel>
 
 
-
-                                                        <materialDesign:RatingBar 
-                                                                 Grid.Row="1" Height="23" VerticalAlignment="Top"
-                                                                 Value="4.5" HorizontalAlignment="Right"  Margin="20"
-                                                                 IsReadOnly="True" >
-                                                            <materialDesign:RatingBar.LayoutTransform>
-                                                                <ScaleTransform ScaleX="0.6" ScaleY=".6"></ScaleTransform>
-                                                            </materialDesign:RatingBar.LayoutTransform>
-
-                                                        </materialDesign:RatingBar>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border>
-
-                                                    <Grid>
-                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="60" Height="60" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                            <StackPanel   Margin="10 0" VerticalAlignment="Center">
-
-                                                                <TextBlock Text="Surname Fname"  FontSize="20"/>
-                                                                <TextBlock Text="Вау.Оч1111111111111111ень кру комментарий 2" FontSize="13" TextWrapping="Wrap" MaxWidth="330" Margin="0 10 0 0"/>
-                                                            </StackPanel>
-
-                                                        </StackPanel>
-
-
-
-                                                        <materialDesign:RatingBar 
-                                                                 Grid.Row="1" Height="23" VerticalAlignment="Top"
-                                                                 Value="4.5" HorizontalAlignment="Right"  Margin="20"
-                                                                 IsReadOnly="True" >
-                                                            <materialDesign:RatingBar.LayoutTransform>
-                                                                <ScaleTransform ScaleX="0.6" ScaleY=".6"></ScaleTransform>
-                                                            </materialDesign:RatingBar.LayoutTransform>
-
-                                                        </materialDesign:RatingBar>
-                                                    </Grid>
-
-                                                </Border>
-
-                                                <Border>
-
-                                                    <Grid>
-                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="60" Height="60" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                            <StackPanel   Margin="10 0" VerticalAlignment="Center">
-
-                                                                <TextBlock Text="Surname Fname"  FontSize="20"/>
-                                                                <TextBlock Text="Вау.Оч1111111111111111ень кру комментарий 2" FontSize="13" TextWrapping="Wrap" MaxWidth="330" Margin="0 10 0 0"/>
-                                                            </StackPanel>
-
-                                                        </StackPanel>
-
-
-
-                                                        <materialDesign:RatingBar 
-                                                                 Grid.Row="1" Height="23" VerticalAlignment="Top"
-                                                                 Value="4.5" HorizontalAlignment="Right"  Margin="20"
-                                                                 IsReadOnly="True" >
-                                                            <materialDesign:RatingBar.LayoutTransform>
-                                                                <ScaleTransform ScaleX="0.6" ScaleY=".6"></ScaleTransform>
-                                                            </materialDesign:RatingBar.LayoutTransform>
-
-                                                        </materialDesign:RatingBar>
-                                                    </Grid>
-
-                                                </Border>
-
-
-                                            </StackPanel>
-
-
-                                        </hc:ScrollViewer>
+                                                                    </Grid>
 
 
 
@@ -245,34 +155,78 @@
 
 
 
-                                        <Border  Background="#f5f5f5" Grid.Row="1">
+                                                                    <TextBlock Text="{Binding Review}" 
+                                                                   
+                                                                   Grid.Row="1" HorizontalAlignment="Left"
+                                                                   TextWrapping="Wrap" Margin="7 5 0 5"/>
 
-                                            
-                                                
+                                                                </Grid>
+
+
+
+                                                            </Grid>
+
+                                                        </Border>
+
+                                                        <DataTemplate.Triggers>
+                                                            <DataTrigger Binding="{Binding  User1.ImageProfile,  TargetNullValue={x:Null}}" Value="{x:Null}">
+                                                                <Setter TargetName="gravatarInLvNewsCommentsWorkoutSocial" Property="Visibility" Value="Visible" />
+                                                            </DataTrigger>
+
+
+                                                        </DataTemplate.Triggers>
+
+                                                    </DataTemplate>
+
+                                                </ListView.ItemTemplate>
+
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="{x:Type ListViewItem}">
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                                    <ContentPresenter />
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+
+                                            </ListView>
+
+
+
+
+
+
+
+                                            <Border  Background="#f5f5f5" Grid.Row="1">
+
+
+
                                                 <Button
                
-                Height="33" Margin="10" Width="250"
-                Background="#ff844b" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                Height="0" IsEnabled="False" Margin="10" Width="250"
+                Background="#ff844b" Name="btnCreateReview"
+                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                 BorderBrush="#ff844b"
                 Foreground="White"
-                Content="Оставить отзыв"
+                Content="Оставить отзыв" Click="btnCreateReview_Click"
                 FontSize="20" Cursor="Hand">
                                                     <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
                                                 </Button>
-                                            
-                                          
-                                        </Border>
-                                    </Grid>
-
-                                </Border>
-
-                            </hc:ScrollViewer>
-
-                            </materialDesign:DialogHost>
 
 
+                                            </Border>
+                                        </Grid>
 
-                        </StackPanel>
+                                    </Border>
+
+                                </hc:ScrollViewer>
+
+
+                            </StackPanel>
 
 
 
@@ -283,20 +237,23 @@
 
 
 
-                    </Grid>
+                        </Grid>
+                    </materialDesign:DialogHost>
+
+                    
 
                 </Border>
 
 
 
-           
-                    <Border  Margin="20" Background="#f5f5f5"  CornerRadius="20">
 
-                          <materialDesign:Transitioner SelectedIndex="0" Name="trTrainer">
+                <Border  Margin="20" Background="#f5f5f5"  CornerRadius="20">
 
-                              <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+                    <materialDesign:Transitioner SelectedIndex="0" Name="trTrainer">
 
-                                <Grid Margin="20" Cursor="">
+                        <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+
+                            <Grid Margin="20" Cursor="">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="201*"/>
                                     <RowDefinition Height="743*"/>
@@ -308,110 +265,95 @@
                                     <TextBlock Text="Обо мне:" 
                            FontSize="45" />
 
-                                    <TextBlock 
-                                Margin="0 20 200 0" Text="ОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомне"
+                                    <TextBlock Name="tbDescriptionTrainer"
+                                Margin="0 20 200 0" 
                                     TextWrapping="Wrap"
                  FontSize="30" 
                  materialDesign:HintAssist.IsFloating="True" />
                                 </StackPanel>
-                                      
-                                <hc:ScrollViewer Grid.Row="1">
-                                    <StackPanel  Margin="0 20 30 10">
+
+                                    <StackPanel Grid.Row="1" Margin="0 20 30 10">
                                         <TextBlock Text="Услуги:" 
                            FontSize="45" />
-                                        <StackPanel>
-                                            <TextBlock 
-                                Margin="0 40 0 20" Text="Название услуги"   TextWrapping="Wrap"
+                                    <ListView     x:Name="lvService" 
+                              Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=2}"
+                             BorderThickness="0"
+                              Margin="0 10 0 10" Background="#f5f5f5" HorizontalAlignment="Left"
+                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                            Style="{DynamicResource ListBox.Small}">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate  >
+                                                <StackPanel/>
+                                            </ItemsPanelTemplate >
+                                        </ListView.ItemsPanel >
+                                        <ListView.ItemTemplate  >
+                                            <DataTemplate >
+                                                <StackPanel  Margin="0 20 30 0">
+                                                   
+                                                    <TextBlock 
+                                Margin="0 0 0 20" Text="{Binding Name}"   TextWrapping="Wrap"
                  FontSize="35" 
                  materialDesign:HintAssist.IsFloating="True" />
-                                            <TextBlock  Text="ОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомне"
+                                                        <TextBlock  Text="{Binding Description}"
                                      TextWrapping="Wrap"
                  FontSize="30" 
                  materialDesign:HintAssist.IsFloating="True" />
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Foreground="#ff844b"
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Foreground="#ff844b"
                                 Margin="0 20 0 0" Text="Стоимость:"
                                         TextWrapping="Wrap"
                  FontSize="30" 
                  materialDesign:HintAssist.IsFloating="True" />
-                                                <TextBlock Foreground="#ff844b"
-                                Margin="0 20 0 0" Text="4000"
+                                                        <TextBlock Foreground="#ff844b"
+                                Margin="0 20 0 0" Text="{Binding Price}"
                                         TextWrapping="Wrap"
                  FontSize="30" 
                  materialDesign:HintAssist.IsFloating="True" />
-                                            </StackPanel>
-
-                                        </StackPanel>
-
-
-                                        <StackPanel>
-                                            <TextBlock 
-                                Margin="0 40 0 20" Text="Название услуги"   TextWrapping="Wrap"
-                 FontSize="35" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                                            <TextBlock  Text="ОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомне"
-                                     TextWrapping="Wrap"
-                 FontSize="30" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Foreground="#ff844b"
-                                Margin="0 20 0 0" Text="Стоимость:"
-                                        TextWrapping="Wrap"
-                 FontSize="30" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                                                <TextBlock Foreground="#ff844b"
-                                Margin="0 20 0 0" Text="4000"
-                                        TextWrapping="Wrap"
-                 FontSize="30" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                                            </StackPanel>
-
-                                        </StackPanel>
+                                                    </StackPanel>
 
 
 
-                                        <StackPanel>
-                                            <TextBlock 
-                                Margin="0 40 0 20" Text="Название услуги"   TextWrapping="Wrap"
-                 FontSize="35" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                                            <TextBlock  Text="ОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомне"
-                                     TextWrapping="Wrap"
-                 FontSize="30" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Foreground="#ff844b"
-                                Margin="0 20 0 0" Text="Стоимость:"
-                                        TextWrapping="Wrap"
-                 FontSize="30" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                                                <TextBlock Foreground="#ff844b"
-                                Margin="0 20 0 0" Text="4000"
-                                        TextWrapping="Wrap"
-                 FontSize="30" 
-                 materialDesign:HintAssist.IsFloating="True" />
-                                            </StackPanel>
 
-                                        </StackPanel>
+                                                </StackPanel>
+                                                   
+
+
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListViewItem}">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                            <ContentPresenter />
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+
+                                    </ListView>
 
 
 
 
 
-                                    </StackPanel>
+
+
+                                </StackPanel>
 
 
 
-                                </hc:ScrollViewer>
 
 
                                 <Button
                
                Margin="10"  Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"                        
-                Width="50" Height="50"
+                Width="50" Height="0" Name="btnChange" IsEnabled="False"
                 Background="#ff844b" HorizontalAlignment="Right" VerticalAlignment="Top"
                 BorderBrush="#ff844b" 
-                    
+                    Click="btnChange_Click"
         Content="{materialDesign:PackIcon Kind=Pencil, Size=22}"
                                     Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"
                 Foreground="White"  
@@ -419,12 +361,12 @@
                                     <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
                                 </Button>
                             </Grid>
-                              </materialDesign:TransitionerSlide>
-                              
-                              
-                              <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}" Cursor="">
+                        </materialDesign:TransitionerSlide>
 
-                                  <Grid Margin="20" Cursor="">
+
+                        <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}" Cursor="">
+
+                            <Grid Margin="20" Cursor="">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="80*"/>
@@ -432,50 +374,50 @@
                                 </Grid.RowDefinitions>
 
 
-                              
 
-                            
+
+
                                 <StackPanel>
                                     <TextBlock Text="Обо мне:" 
                            FontSize="45" />
 
                                     <TextBox 
-                                Margin="0 20 200 0" Text="ОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомнеОбомнеобомне"
-                                TextWrapping="Wrap"
+                                Margin="0 20 200 0" Text="" materialDesign:HintAssist.Hint="Описание"
+                                TextWrapping="Wrap" Name="tbDescription"
                  FontSize="30" Style="{StaticResource MaterialDesignOutlinedTextBox}" 
                  materialDesign:HintAssist.IsFloating="True" />
                                 </StackPanel>
 
-                                      
-                                      
 
 
-                                        <TextBlock Text="Услуги:" 
+
+
+                                <TextBlock Text="Услуги:" 
                            FontSize="45" Grid.Row="1" VerticalAlignment="Bottom" />
 
-                                        <ListView     x:Name="lvService" 
+                                <ListView     x:Name="lvServiceCreate" 
                               Grid.Row="2" 
-                              HorizontalAlignment="Center" BorderThickness="0"
+                              HorizontalAlignment="Left" BorderThickness="0"
                               Margin="0 10 0 10" Background="#f5f5f5"
                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                             Style="{DynamicResource ListBox.Small}">
-                                            <ListView.ItemsPanel>
-                                                <ItemsPanelTemplate  >
-                                                    <WrapPanel/>
-                                                </ItemsPanelTemplate >
-                                            </ListView.ItemsPanel >
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate  >
+                                            <StackPanel/>
+                                        </ItemsPanelTemplate >
+                                    </ListView.ItemsPanel >
                                     <ListView.ItemTemplate  >
                                         <DataTemplate >
                                             <Border>
-                                                <StackPanel Grid.Row="1" Margin="0 30 50 80">
+                                                <StackPanel Grid.Row="1" Margin="0 30 50 5">
                                                     <TextBox 
-                                Margin="0 30 0 20" MinWidth="650" Text="{Binding serviceName}" 
+                                Margin="0 30 0 20" MinWidth="650" Text="{Binding  Name}" 
                                             materialDesign:HintAssist.Hint="Название услуги"   TextWrapping="Wrap"
                  FontSize="35"  />
                                                     <TextBox  
                                          MinWidth="850"
                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                            Text="{Binding description}"
+                                            Text="{Binding Description}"
                                             materialDesign:HintAssist.Hint="Описание"
                                              materialDesign:HintAssist.Background="#f5f5f5"            
                                      TextWrapping="Wrap"
@@ -489,7 +431,7 @@
                                                         <TextBox Foreground="#ff844b"
                                 Margin="0 20 0 0" materialDesign:HintAssist.Hint="Стоимость"
                                         TextWrapping="Wrap"
-                 FontSize="30" Text="{Binding cost}" />
+                 FontSize="30" Text="{Binding Price}" />
 
                                                         <Button
                                                              Name="btnDeleteService" VerticalAlignment="Bottom"
@@ -505,27 +447,28 @@
 
                                                     </StackPanel>
 
-                                                   
+
 
                                                 </StackPanel>
-                                                
+
                                             </Border>
-                                           
+
+
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                     <ListView.ItemContainerStyle>
-                                                <Style TargetType="{x:Type ListViewItem}">
-                                                    <Setter Property="Background" Value="Transparent" />
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                                <ContentPresenter />
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Style>
-                                            </ListView.ItemContainerStyle>
-                                   
+                                        <Style TargetType="{x:Type ListViewItem}">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                        <ContentPresenter />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+
                                 </ListView>
 
 
@@ -545,7 +488,7 @@
 
 
                                     <Button
-               
+                Name="btnCancelChange" Click="btnCancelChange_Click"
                  Margin="10" Height="50" Width="50"
                 Background="#ff844b" HorizontalAlignment="Right" VerticalAlignment="Top"
                 BorderBrush="#ff844b"
@@ -558,30 +501,30 @@
                                     </Button>
 
                                     <Button
-               
+               Name="btnSaveChange" Click="btnSaveChange_Click"
                 Margin="10" Height="50" Width="50"
                  Content="{materialDesign:PackIcon Check,Size=25}"                        
                 Background="#ff844b" HorizontalAlignment="Right" VerticalAlignment="Top"
-                BorderBrush="#ff844b" Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
+                BorderBrush="#ff844b" 
                 Foreground="White" 
                 Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"                                         
-                FontSize="20" Cursor="">
+                FontSize="20" Cursor="Hand">
                                         <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
                                     </Button>
 
-                                   
+
                                 </StackPanel>
 
-                                
+
 
                             </Grid>
-                              </materialDesign:TransitionerSlide>
+                        </materialDesign:TransitionerSlide>
 
 
 
-                          </materialDesign:Transitioner>
+                    </materialDesign:Transitioner>
 
-                    </Border>
+                </Border>
 
 
 

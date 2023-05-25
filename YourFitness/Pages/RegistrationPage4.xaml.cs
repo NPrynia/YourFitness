@@ -20,6 +20,7 @@ namespace YourFitness.Pages
     /// </summary>
     public partial class RegistrationPage4 : Page
     {
+        ModelEF.User newUser;
         public RegistrationPage4()
         {
             InitializeComponent();
@@ -35,6 +36,14 @@ namespace YourFitness.Pages
             }
             else
             {
+                btn1.Foreground = Brushes.Gray;
+                btn1.BorderBrush = Brushes.Gray;
+                btn2.Foreground = Brushes.Gray;
+                btn2.BorderBrush = Brushes.Gray;
+                btn3.Foreground = Brushes.Gray;
+                btn3.BorderBrush = Brushes.Gray;
+                btn4.Foreground = Brushes.Gray;
+                btn4.BorderBrush = Brushes.Gray;
 
                 btn.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff844b");
                 btn.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff844b");
@@ -64,10 +73,10 @@ namespace YourFitness.Pages
 
         private void btnContinue_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            RegistrationWindow registrationWindow = new RegistrationWindow();
-            registrationWindow.Close();
-            mainWindow.Show();
+            AuthWindow authWindow = new AuthWindow();
+            var currentWin = Window.GetWindow(this);
+            currentWin.Close();
+            authWindow.Show();
         }
     }
 }

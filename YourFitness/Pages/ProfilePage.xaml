@@ -31,15 +31,15 @@
     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
         <Grid Background="#fafafa">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="301*"/>
                 <ColumnDefinition Width="109*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
                 <RowDefinition Height="319*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.ColumnSpan="3" Margin="0,0,436,0" >
+            <Grid Grid.Row="1"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="721*"/>
@@ -62,7 +62,7 @@
                             <Border.Background>
                                 <ImageBrush x:Name="photoImage" Stretch="Fill"  />
                             </Border.Background>
-                            <hc:Gravatar Name="gravatar" Width="280" Height="280" Id="user2444" BorderThickness="0.6" BorderBrush="#333333" Style="{StaticResource GravatarCircle}"/>
+                            <hc:Gravatar Name="gravatarProfile" Width="280" Height="280" Id="user2444" BorderThickness="0.6" BorderBrush="#333333" Style="{StaticResource GravatarCircle}"/>
                         </Border>
 
                         <Grid Grid.Column="1" Grid.Row="1">
@@ -116,691 +116,759 @@
 
 
 
-                <materialDesign:Transitioner Name="trProfilemessage" SelectedIndex="1" Margin="20" Grid.Row="1">
+                <materialDesign:Transitioner Name="trProfilemessage" SelectedIndex="0" Margin="20" Grid.Row="1">
 
 
                     <!--NewsFeed-->
                     <materialDesign:TransitionerSlide  OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
 
 
-                        <!--DIalogCOntet-->
-
                         <!--News-->
-                        <Grid>
 
-                            <hc:ScrollViewer  BorderThickness="0">
-                                <StackPanel>
+                        <materialDesign:DialogHost DialogTheme="Inherit" Grid.Column="1"   CloseOnClickAway="True"  >
 
-                                    <!--Example 1-->
-                                    <materialDesign:DrawerHost x:Name="DrawerHost"
-                                 BorderBrush="{DynamicResource MaterialDesignDivider}"
+
+                            <materialDesign:DialogHost.DialogContent>
+                                <StackPanel MaxWidth="450" MaxHeight="400" Margin="16">
+                                    <materialDesign:RatingBar Name="rbCreateReviewWorkoutInSocial"
+                                                                 Grid.Row="1" Height="25" VerticalAlignment="Top"
+                                                                 HorizontalAlignment="Left" 
+                                                                      
+                                                                      Margin="0 8 0 0" />
+                                    <TextBox
+        Margin="0 8 0 0" TextWrapping="Wrap"
+        HorizontalAlignment="Stretch" FontSize="20" Text="fdss"
+        x:Name="tbCreateReviewWorokutInSOcial" />
+                                    <StackPanel
+        Orientation="Horizontal"
+        HorizontalAlignment="Right">
+                                        <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsDefault="True"
+          Margin="0 8 8 0" Name="btnDeleteRivewWorkoutInSocial"
+          Content="Удалить" Click="btnDeleteRivewWorkoutInSocial_Click"
+          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+                                            <Button.CommandParameter>
+                                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                                    True
+                                                </system:Boolean>
+                                            </Button.CommandParameter>
+                                        </Button>
+                                        <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsCancel="True"
+          Margin="0 8 8 0" x:Name="btnSendReviewWorkoutInSocial" Click="btnSendReviewWorkoutInSocial_Click"
+          Content="Отправить"
+          Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+
+
+
+                                            <Button.CommandParameter>
+                                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                                    False
+                                                </system:Boolean>
+                                            </Button.CommandParameter>
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </materialDesign:DialogHost.DialogContent>
+
+
+                            <Grid >
+
+                               
+                                <ListView    
+                              x:Name="lvNews" 
+                              Grid.Row="1" Background="Transparent" BorderThickness="0"
+                              HorizontalAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=1}"
+                               ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{DynamicResource ListBoxBaseStyle}">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate  >
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate >
+                                    </ListView.ItemsPanel >
+                                    <ListView.ItemTemplate  >
+                                        <DataTemplate >
+                                            <materialDesign:DrawerHost x:Name="DrawerHostInLvNewsSocial"
+                                 BorderBrush="{DynamicResource MaterialDesignDivider}" 
                                  BottomDrawerBackground="Transparent" >
 
-                                        <materialDesign:DrawerHost.Style>
-                                            <Style TargetType="materialDesign:DrawerHost" BasedOn="{StaticResource {x:Type materialDesign:DrawerHost}}">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IsChecked, ElementName=BackgroundToggle}" Value="True">
-                                                        <Setter Property="OverlayBackground" Value="{DynamicResource PrimaryHueMidBrush}" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </materialDesign:DrawerHost.Style>
-
-
-                                        <!--CommentBorder-->
-                                        <materialDesign:DrawerHost.BottomDrawerContent>
-                                            <hc:ScrollViewer >
-                                                <Border Width="600" Height="400" CornerRadius="20" Background="white">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="62*"/>
-                                                            <RowDefinition Height="10*"/>
-                                                        </Grid.RowDefinitions>
-
-                                                        <hc:ScrollViewer>
-
-                                                            <StackPanel >
-                                                                <Border>
-
-                                                                    <Grid>
-                                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                            <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                <TextBlock Text="Surname Fname" />
-                                                                                <TextBlock Text="Вау.Очень крутой комментарий"  Margin="0 10 0 0"/>
-                                                                            </StackPanel>
-
-                                                                        </StackPanel>
-
-
-                                                                        <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                    </Grid>
-
-                                                                </Border>
-
-                                                                <Border>
-
-                                                                    <Grid>
-                                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                            <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                <TextBlock Text="Surname Fname" />
-                                                                                <TextBlock Text="Вау.Очень крутой комментарий 2"  Margin="0 10 0 0"/>
-                                                                            </StackPanel>
-
-                                                                        </StackPanel>
-
-
-                                                                        <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                    </Grid>
-
-                                                                </Border>
-
-                                                                <Border>
-
-                                                                    <Grid>
-                                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                            <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                <TextBlock Text="Surname Fname" />
-                                                                                <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                            </StackPanel>
-
-                                                                        </StackPanel>
-
-
-                                                                        <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                    </Grid>
-
-                                                                </Border>
-
-                                                                <Border>
-
-                                                                    <Grid>
-                                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                            <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                <TextBlock Text="Surname Fname" />
-                                                                                <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                            </StackPanel>
-
-                                                                        </StackPanel>
-
-
-                                                                        <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                    </Grid>
-
-                                                                </Border>
-
-                                                                <Border>
-
-                                                                    <Grid>
-                                                                        <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                                            <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                            <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                <TextBlock Text="Surname Fname" />
-                                                                                <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                            </StackPanel>
-
-                                                                        </StackPanel>
-
-
-                                                                        <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                    </Grid>
-
-                                                                </Border>
-
-
-                                                            </StackPanel>
-
-
-                                                        </hc:ScrollViewer>
-
-
-
-
-
-
-
-                                                        <Border  Background="#f5f5f5" Grid.Row="1">
-                                                            <hc:TextBox MaxLength="150" ShowClearButton="True" Height="20" Margin="10" Text="213"/>
-
-                                                        </Border>
-                                                    </Grid>
-
-                                                </Border>
-
-                                            </hc:ScrollViewer>
-                                        </materialDesign:DrawerHost.BottomDrawerContent>
-
-
-                                        <!--PostBorder-->
-                                        <materialDesign:Transitioner SelectedIndex="0">
-                                            <!--Post-->
-                                            <Border Background="white"  CornerRadius="20">
-
-                                                <Grid >
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="500"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                        <hc:Gravatar Name="gravatar3" HorizontalAlignment="Left" Width="50" Height="50" Id="user2444" BorderThickness="0.6" BorderBrush="#333333"
-                     Style="{StaticResource GravatarCircle}"/>
-                                                        <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                            <TextBlock Text="Surname Fname" />
-                                                            <TextBlock Text="30.11.2022 14:19" Foreground="Gray" Margin="0 10 0 0"/>
-                                                        </StackPanel>
-
-                                                    </StackPanel>
-
-
-                                                    <TextBlock Margin="10" Text="Новое фотоfdgdffdgfdgfdgsdgfffffdghfdghdghdgfh" Grid.Row="1"/>
-
-                                                    <Image Margin="10" Source="/Res/example.jpg"  Stretch="Fill"  Grid.Row="2"/>
-
-
-                                                    <StackPanel Grid.Row="4" Margin="10" Orientation="Horizontal">
-
-                                                        <materialDesign:Badged
-                            Name="badgedLike" Badge="3" BadgeBackground="gray" >
-                                                            <Button x:Name="btnLike"  Foreground="black"
-                    HorizontalAlignment="Left" 
-                    Click="btnLike_Click"
-                    Background="#f5f5f5" BorderThickness="0" Width="100"
-                    >
-                                                                <materialDesign:PackIcon x:Name="icon" Kind="HeartOutLine" />
-
-                                                                <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
-                                                                <hc:FloatingBlock.ContentTemplate>
-                                                                    <DataTemplate>
-                                                                        <Path Stretch="Uniform" Data="{StaticResource LoveGeometry}" Fill="{DynamicResource DangerBrush}" Width="16" Height="16"/>
-                                                                    </DataTemplate>
-                                                                </hc:FloatingBlock.ContentTemplate>
-                                                            </Button>
-                                                        </materialDesign:Badged>
-
-
-
-                                                        <materialDesign:Badged Margin="20 0 0 0"
-                            Name="badgedComment" Badge="1" BadgeBackground="gray" >
-                                                            <Button x:Name="btnComment"
-                                                                            Content="{materialDesign:PackIcon CommentOutLine}" Foreground="Black"
-                                                                            
-                                                                                 Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
-                                                                                 CommandParameter="{x:Static Dock.Bottom}"
-                                                                                 HorizontalAlignment="Left" 
-                                                                                 Click="btnComment_Click"
-                                                                                 Background="#f5f5f5" BorderThickness="0" Width="100"
-                                                                                 >
-                                                                <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
-
-                                                            </Button>
-                                                        </materialDesign:Badged>
-
-
-                                                    </StackPanel>
-
-                                                    <Button x:Name="btnWorkout" 
-                            Content="Тренировка" Foreground="Black"
-                    HorizontalAlignment="right"  
-                    Grid.Row="4" Margin="10" 
-                      Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"    
-                    Background="#f5f5f5" BorderThickness="0" Width="150"
-                    >
-                                                        <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
-
-                                                    </Button>
-
-
-
-
-                                                </Grid>
-
-                                            </Border>
-                                            <!--Workout-->
-                                            <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
-
-                                                <Grid  Width="920" Height="560" HorizontalAlignment="Center" VerticalAlignment="Center" >
-
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="17*"/>
-                                                            <ColumnDefinition Width="10*"/>
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <Border Background="#f5f5f5" CornerRadius="20" Grid.ColumnSpan="2"/>
-
-
-                                                        <Border Background="white" CornerRadius="20"/>
-
-
-                                                        <Grid  Grid.Column="1" Margin="20" VerticalAlignment="Top"  MaxHeight="550" MinHeight="300">
+                                                <materialDesign:DrawerHost.Style>
+                                                    <Style TargetType="materialDesign:DrawerHost" BasedOn="{StaticResource {x:Type materialDesign:DrawerHost}}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsChecked, ElementName=BackgroundToggle}" Value="True">
+                                                                <Setter Property="OverlayBackground" Value="{DynamicResource PrimaryHueMidBrush}" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </materialDesign:DrawerHost.Style>
+
+
+                                                <!--CommentBorder-->
+                                                <materialDesign:DrawerHost.BottomDrawerContent>
+
+                                                    <Border Width="600" Height="400" CornerRadius="20" Background="white">
+                                                        <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="62*"/>
                                                                 <RowDefinition Height="10*"/>
                                                             </Grid.RowDefinitions>
 
-                                                            <hc:ScrollViewer>
 
-                                                                <StackPanel >
-                                                                    <Border>
+                                                            <TextBlock Text="Кажется тут пусто"
+                           FontSize="35" Foreground="DimGray" Visibility="Hidden" x:Name="tbIfLvCommentsNull"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal" >
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+                                                            <ListView
+                                                                                  Background="Transparent" 
+                                                                                  BorderThickness="0"
+                                                                                  ItemsSource="{Binding AllComments}"
+                                                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                                    Style="{DynamicResource ListBoxBaseStyle}"
+                                                                                  >
+                                                                <ListView.ItemsPanel>
+                                                                    <ItemsPanelTemplate  >
+                                                                        <WrapPanel/>
+                                                                    </ItemsPanelTemplate >
+                                                                </ListView.ItemsPanel >
+                                                                <ListView.ItemTemplate  >
+                                                                    <DataTemplate >
+                                                                        <Border  Width="580" >
+                                                                            <Grid>
+                                                                                <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                                                                                    <Border CornerRadius="220"  HorizontalAlignment="Left" BorderThickness="0"  Width="50" Height="50" >
+                                                                                        <Border.Background>
+                                                                                            <ImageBrush ImageSource="{Binding User.ImageProfile, TargetNullValue={x:Null}}" Stretch="Fill"  />
+                                                                                        </Border.Background>
 
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий"  Margin="0 10 0 0"/>
+                                                                                        <hc:Gravatar  HorizontalAlignment="Left" x:Name="gravatarInLvNewsCommentsSocial"
+                                                                                  Width="50" Height="50" Visibility="Hidden"  Id="{Binding User.Login}" 
+                                                                                          BorderThickness="0.6" BorderBrush="#333333"
+                                                                            Style="{StaticResource GravatarCircle}">
+                                                                                        </hc:Gravatar>
+                                                                                    </Border>
+
+
+
+                                                                                    <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                                        <TextBlock Text="{Binding User.FIO}" />
+                                                                                        <TextBlock Text="{Binding Comment}"  Margin="0 10 0 0"/>
+                                                                                    </StackPanel>
+
                                                                                 </StackPanel>
 
-                                                                            </StackPanel>
+
+                                                                                <TextBlock Text="{Binding TimeSentComment ,StringFormat='{}{0:dd.MM.yyyy HH:mm}'}" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
+                                                                            </Grid>
+
+                                                                        </Border>
+                                                                        <DataTemplate.Triggers>
+                                                                            <DataTrigger Binding="{Binding  User.ImageProfile,  TargetNullValue={x:Null}}" Value="{x:Null}">
+                                                                                <Setter TargetName="gravatarInLvNewsCommentsSocial" Property="Visibility" Value="Visible" />
+                                                                            </DataTrigger>
 
 
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
-
-                                                                    </Border>
-
-                                                                    <Border>
-
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal" >
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 2"  Margin="0 10 0 0"/>
-                                                                                </StackPanel>
-
-                                                                            </StackPanel>
 
 
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
+                                                                        </DataTemplate.Triggers>
 
-                                                                    </Border>
+                                                                    </DataTemplate>
 
-                                                                    <Border>
+                                                                </ListView.ItemTemplate>
 
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal" >
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+                                                                <ListView.ItemContainerStyle>
+                                                                    <Style TargetType="{x:Type ListViewItem}">
+                                                                        <Setter Property="Background" Value="Transparent" />
+                                                                        <Setter Property="Template">
+                                                                            <Setter.Value>
+                                                                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                                                    <ContentPresenter />
+                                                                                </ControlTemplate>
+                                                                            </Setter.Value>
+                                                                        </Setter>
+                                                                    </Style>
+                                                                </ListView.ItemContainerStyle>
 
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                                </StackPanel>
-
-                                                                            </StackPanel>
-
-
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
-
-                                                                    </Border>
-
-                                                                    <Border>
-
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal" >
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                                </StackPanel>
-
-                                                                            </StackPanel>
+                                                            </ListView>
 
 
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
-
-                                                                    </Border>
-
-                                                                    <Border>
-
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal" >
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                                </StackPanel>
-
-                                                                            </StackPanel>
 
 
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
-
-                                                                    </Border>
-                                                                    <Border>
-
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                                </StackPanel>
-
-                                                                            </StackPanel>
 
 
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
 
-                                                                    </Border>
-                                                                    <Border>
+                                                            <Border  Background="#f5f5f5" Grid.Row="1">
+                                                                <hc:TextBox MaxLength="150"
+                                                                                    Name="tbCommentInlvNews" KeyDown="tbCommentInlvNews_KeyDown" 
+                                                                                    ShowClearButton="True" Height="20" Margin="10" Text="" Cursor=""/>
 
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal" >
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+                                                            </Border>
+                                                        </Grid>
 
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                                </StackPanel>
-
-                                                                            </StackPanel>
+                                                    </Border>
+                                                </materialDesign:DrawerHost.BottomDrawerContent>
 
 
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
+                                                <!--PostBorder-->
+                                                <materialDesign:Transitioner x:Name="transitionerInLvNewsSocial"   SelectedIndex="0">
 
-                                                                    </Border>
-                                                                    <Border>
+                                                    <!--Post-->
+                                                    <Border Background="white" Width="1182"    Margin="0 0 0 40" CornerRadius="20">
 
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal" >
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
+                                                        <Grid Margin="5 0 5 0" Cursor="">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto"/>
+                                                                <RowDefinition Height="auto"/>
+                                                                <RowDefinition Height="auto"/>
+                                                                <RowDefinition Height="1*"/>
+                                                            </Grid.RowDefinitions>
+                                                            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
 
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                                </StackPanel>
+                                                                <Border CornerRadius="220"  HorizontalAlignment="Left" BorderThickness="0"  Width="50" Height="50" >
+                                                                    <Border.Background>
+                                                                        <ImageBrush ImageSource="{Binding User.ImageProfile, TargetNullValue={x:Null}}" Stretch="Fill"  />
+                                                                    </Border.Background>
 
-                                                                            </StackPanel>
-
-
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
-
-                                                                    </Border>
-
-
-                                                                    <Border>
-
-                                                                        <Grid>
-                                                                            <StackPanel Orientation="Horizontal">
-                                                                                <hc:Gravatar  HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                                <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                                    <TextBlock Text="Surname Fname" />
-                                                                                    <TextBlock Text="Вау.Очень крутой комментарий 3"  Margin="0 10 0 0"/>
-                                                                                </StackPanel>
-
-                                                                            </StackPanel>
+                                                                    <hc:Gravatar  HorizontalAlignment="Left" x:Name="gravatarInLvNewsSocial"
+                                                                                  Width="50" Height="50" Visibility="Hidden"  Id="{Binding User.Login}" 
+                                                                                          BorderThickness="0.6" BorderBrush="#333333"
+                                                                            Style="{StaticResource GravatarCircle}">
+                                                                    </hc:Gravatar>
+                                                                </Border>
 
 
-                                                                            <TextBlock Text="30.11.2022 14:19" HorizontalAlignment="Right" Foreground="Gray" Margin="20"/>
-                                                                        </Grid>
 
-                                                                    </Border>
+                                                                <StackPanel Margin="10" VerticalAlignment="Center">
 
-
+                                                                    <TextBlock Text="{Binding User.FIO}" />
+                                                                    <TextBlock Text="{Binding timeCreate ,StringFormat='{}{0:dd.MM.yyyy HH:mm}'}" Foreground="Gray" Margin="0 10 0 0"/>
                                                                 </StackPanel>
 
-
-                                                            </hc:ScrollViewer>
-
+                                                            </StackPanel>
 
 
+                                                            <TextBlock Margin="10" Text="{Binding Description}" Grid.Row="1"/>
+
+                                                            <Image x:Name="img" MaxHeight="500" Margin="10" Source="{Binding image, TargetNullValue={x:Null}}"  Stretch="Fill"  Grid.Row="2"/>
+
+
+                                                            <StackPanel VerticalAlignment="Bottom" Grid.Row="3"  Margin="10" Orientation="Horizontal">
+
+
+
+                                                                <materialDesign:Badged x:Name="badgetLikeInSOvialLv"
+                             Badge="{Binding QtyLike}" BadgeBackground="gray" >
+
+                                                                    <ToggleButton x:Name="toggleLikeInLvNewsSocial" Click="toggleLikeInLvNewsSocial_Click"
+                                                                                          
+                                                                                          IsChecked="False"
+                                                                                      
+                                                                                      Style="{StaticResource ToggleButtonCustom}" hc:StatusSwitchElement.HideUncheckedElement="True">
+
+                                                                        <hc:StatusSwitchElement.CheckedElement>
+                                                                            <Grid>
+                                                                                <Button  Content="{materialDesign:PackIcon Heart}"
+                                                                                     Foreground="Red" x:Name="btnLikeTrueInNewsLvSocial"
+                                                                             HorizontalAlignment="Left"  
+                                                                             Background="#f5f5f5" BorderThickness="0" Width="100"
+                                                                             >
+
+                                                                                    <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
+                                                                                    <hc:FloatingBlock.ContentTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <Path Stretch="Uniform" Data="{StaticResource LoveGeometry}" Fill="{DynamicResource DangerBrush}" Width="16" Height="16"/>
+                                                                                        </DataTemplate>
+                                                                                    </hc:FloatingBlock.ContentTemplate>
+
+                                                                                </Button>
+
+                                                                                <Border Cursor="Hand" Background="Transparent" />
+                                                                            </Grid>
+
+
+
+                                                                        </hc:StatusSwitchElement.CheckedElement>
+
+                                                                        <Grid>
+
+                                                                            <Button  Content="{materialDesign:PackIcon HeartOutLine}"
+                                                                                     Foreground="black"
+                                                                             HorizontalAlignment="Left" 
+                                                                             Background="#f5f5f5" BorderThickness="0" Width="100" Cursor="Hand"
+                                                                             >
+
+                                                                                <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
+                                                                                <hc:FloatingBlock.ContentTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Path Stretch="Uniform" Data="{StaticResource LoveGeometry}" Fill="{DynamicResource DangerBrush}" Width="16" Height="16"/>
+                                                                                    </DataTemplate>
+                                                                                </hc:FloatingBlock.ContentTemplate>
+
+                                                                            </Button>
+
+                                                                            <Border Cursor="Hand" Background="Transparent" />
+                                                                        </Grid>
+
+
+                                                                    </ToggleButton>
+
+                                                                    <materialDesign:Badged.Style>
+                                                                        <Style TargetType="materialDesign:Badged">
+                                                                            <Setter Property="BadgeBackground" Value="Gray" />
+                                                                            <Style.Triggers>
+
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </materialDesign:Badged.Style>
+                                                                </materialDesign:Badged>
+
+
+
+                                                                <materialDesign:Badged Margin="20 0 0 0"
+                              Badge="{Binding QtyComment}" BadgeBackground="gray" Name="btnCommentInLvNewsSocial" >
+                                                                    <Button  Content="{materialDesign:PackIcon CommentOutLine}" Foreground="Black"
+                                                                         HorizontalAlignment="Left" Name="btnCommentPostInSocial" 
+                                                                                 Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+                                                                                 CommandParameter="{x:Static Dock.Bottom}"
+                                                             Background="#f5f5f5" BorderThickness="0" Width="100" Cursor="Hand"
+                                                             >
+                                                                        <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
+
+
+                                                                    </Button>
+                                                                </materialDesign:Badged>
 
 
 
 
-                                                            <hc:TextBox  Grid.Row="1" MaxLength="150" ShowClearButton="True" Height="20" Margin="10" Text="213"/>
+
+
+                                                            </StackPanel>
+                                                            <Button 
+                                                                                      Content="Тренировка" Foreground="Black" x:Name="btnTrainIbLvNewsSocial"
+                                                                              HorizontalAlignment="right"  
+                                                                              Grid.Row="3" Margin="10"  VerticalAlignment="Bottom"
+                                                                                Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"    
+                                                                              Background="#f5f5f5" BorderThickness="0" Width="150" >
+                                                                <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
+                                                                <Button.Triggers>
+                                                                    <EventTrigger RoutedEvent="Button.Click">
+                                                                        <BeginStoryboard>
+                                                                            <Storyboard>
+                                                                                <Storyboard >
+                                                                                    <DoubleAnimation Duration="0:0:0.300"  Storyboard.TargetName="gridWorkoutInLvNewsSocial" Storyboard.TargetProperty="Height" To="600" />
+
+                                                                                </Storyboard>
+
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+                                                                    </EventTrigger>
+                                                                </Button.Triggers>
+                                                            </Button>
+
+
 
                                                         </Grid>
 
 
-
-                                                        <Grid Margin="20" >
-
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="163*"/>
-                                                                <ColumnDefinition Width="30*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto"/>
-                                                                <RowDefinition Height="13*"/>
-                                                            </Grid.RowDefinitions>
-
-                                                            <StackPanel  Orientation="Horizontal" >
-                                                                <hc:Gravatar  HorizontalAlignment="Left" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                           Style="{StaticResource GravatarCircle}"/>
-                                                                <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                                    <TextBlock Text="Surname Fname" FontSize="23" />
-                                                                    <TextBlock Text="Описание описание описание" FontSize="18" Foreground="Gray" Margin="0 10 0 0"/>
-                                                                </StackPanel>
-                                                            </StackPanel>
+                                                    </Border>
 
 
-                                                            <StackPanel   VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Right">
-                                                                <TextBlock  Text="Оцениить:" FontSize="23" />
-                                                                <materialDesign:RatingBar
-                                                             x:Name="ratinBarWorkoutInProfileTab"
+                                                    <!--Workout-->
+                                                    <materialDesign:TransitionerSlide Width="1160"  Margin="0 0 0 20" OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
+
+                                                        <Grid   Name="gridWorkoutInLvNewsSocial" Height="250" HorizontalAlignment="Center" VerticalAlignment="Center" >
+
+
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="17*"/>
+                                                                    <ColumnDefinition Width="10*"/>
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <Border Background="#f5f5f5" CornerRadius="20" Grid.ColumnSpan="2"/>
+                                                                <Border Background="white" CornerRadius="20"/>
+
+
+
+
+
+
+
+                                                                <Grid   Margin="20" VerticalAlignment="Top" Grid.Column="1" MaxHeight="550" MinHeight="150">
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="62*"/>
+                                                                        <RowDefinition Height="10*"/>
+                                                                    </Grid.RowDefinitions>
+
+
+                                                                    <StackPanel >
+                                                                        <TextBlock Text="Отзывы"
+                           FontSize="25" Foreground="DimGray" Visibility="Visible" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                                                        <TextBlock Text="Кажется тут пусто" Margin="0 20 0 0"
+                           FontSize="30" Foreground="DimGray" Visibility="Hidden" x:Name="tbIfLvCommentsWorkoutNull"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                    </StackPanel>
+
+
+
+                                                                    <ListView
+                                                                                  Background="Transparent" Margin="0 30 0 0"
+                                                                                  BorderThickness="0" d:ItemsSource="{d:SampleData ItemCount=2}"
+                                                                                  ItemsSource="{Binding Workout.AllWorkoutReaction}"
+                                                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                                    Style="{DynamicResource ListBoxBaseStyle}"
+                                                                                  >
+                                                                        <ListView.ItemsPanel>
+                                                                            <ItemsPanelTemplate  >
+                                                                                <StackPanel/>
+                                                                            </ItemsPanelTemplate >
+                                                                        </ListView.ItemsPanel >
+                                                                        <ListView.ItemTemplate  >
+                                                                            <DataTemplate >
+                                                                                <Border>
+
+                                                                                    <Grid>
+
+
+                                                                                        <Grid>
+                                                                                            <Grid.RowDefinitions>
+                                                                                                <RowDefinition Height="20*"/>
+                                                                                                <RowDefinition Height="7*"/>
+                                                                                            </Grid.RowDefinitions>
+
+
+                                                                                            <Grid>
+                                                                                                <Grid.ColumnDefinitions>
+                                                                                                    <ColumnDefinition Width="80*"/>
+                                                                                                    <ColumnDefinition Width="375*"/>
+                                                                                                </Grid.ColumnDefinitions>
+                                                                                                <Border CornerRadius="220"  HorizontalAlignment="Left" BorderThickness="0"  Width="50" Height="50" >
+                                                                                                    <Border.Background>
+                                                                                                        <ImageBrush ImageSource="{Binding User.ImageProfile, TargetNullValue={x:Null}}" Stretch="Fill"  />
+                                                                                                    </Border.Background>
+
+                                                                                                    <hc:Gravatar  HorizontalAlignment="Left" x:Name="gravatarInLvNewsCommentsWorkoutSocial"
+                                                                                  Width="50" Height="50" Visibility="Hidden"  Id="{Binding User.Login}" 
+                                                                                          BorderThickness="0.6" BorderBrush="#333333"
+                                                                            Style="{StaticResource GravatarCircle}">
+                                                                                                    </hc:Gravatar>
+                                                                                                </Border>
+
+
+                                                                                                <StackPanel Grid.Column="1"   Margin="10 0" VerticalAlignment="Center">
+
+                                                                                                    <TextBlock Text="{Binding User.FIO}" TextWrapping="Wrap"  HorizontalAlignment="Left" FontSize="13"  />
+                                                                                                    <TextBlock Text="{Binding TimeSent ,StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"
+                                                                       HorizontalAlignment="left" Margin="0 3 0 0"
+                                                                       Grid.Column="1" VerticalAlignment="Top"  Foreground="Gray"/>
+                                                                                                    <materialDesign:RatingBar  VerticalAlignment="Top"
+                                                                 Value="{Binding Rating}" HorizontalAlignment="left"  Margin="0 5 0 0"
+                                                                 IsReadOnly="True" >
+                                                                                                        <materialDesign:RatingBar.LayoutTransform>
+                                                                                                            <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
+                                                                                                        </materialDesign:RatingBar.LayoutTransform>
+
+                                                                                                    </materialDesign:RatingBar>
+                                                                                                </StackPanel>
+
+
+
+
+
+                                                                                            </Grid>
+
+
+
+
+
+
+
+                                                                                            <TextBlock Text="{Binding Review}" 
+                                                                   
+                                                                   Grid.Row="1" HorizontalAlignment="Left"
+                                                                   TextWrapping="Wrap" Margin="7 5 0 5"/>
+
+                                                                                        </Grid>
+
+
+
+                                                                                    </Grid>
+
+                                                                                </Border>
+
+                                                                                <DataTemplate.Triggers>
+                                                                                    <DataTrigger Binding="{Binding  User.ImageProfile,  TargetNullValue={x:Null}}" Value="{x:Null}">
+                                                                                        <Setter TargetName="gravatarInLvNewsCommentsWorkoutSocial" Property="Visibility" Value="Visible" />
+                                                                                    </DataTrigger>
+
+
+                                                                                </DataTemplate.Triggers>
+
+                                                                            </DataTemplate>
+
+                                                                        </ListView.ItemTemplate>
+
+                                                                        <ListView.ItemContainerStyle>
+                                                                            <Style TargetType="{x:Type ListViewItem}">
+                                                                                <Setter Property="Background" Value="Transparent" />
+                                                                                <Setter Property="Template">
+                                                                                    <Setter.Value>
+                                                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                                                            <ContentPresenter />
+                                                                                        </ControlTemplate>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                            </Style>
+                                                                        </ListView.ItemContainerStyle>
+
+                                                                    </ListView>
+
+
+
+
+
+
+
+                                                                    <Button
+               
+                                                                             Grid.Row="1"
+                                                                                           Height="33" Margin="10" Width="250"
+                                                                                           Background="#ff844b"
+                                                                                           Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                                                                                           BorderBrush="#ff844b"
+                                                                                           Foreground="White" Name="craeteReviewInSocial" Click="craeteReviewInSocial_Click" 
+                                                                                           Content="Оставить отзыв"
+                                                                                           FontSize="20" Cursor="Hand">
+                                                                        <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
+                                                                    </Button>
+
+
+
+                                                                </Grid>
+
+
+
+                                                                <Grid Margin="20" >
+
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="163*"/>
+                                                                        <ColumnDefinition Width="30*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="auto"/>
+                                                                        <RowDefinition Height="13*"/>
+                                                                    </Grid.RowDefinitions>
+
+                                                                    <StackPanel  Orientation="Horizontal" >
+
+
+
+                                                                        <Border CornerRadius="220"  HorizontalAlignment="Left" BorderThickness="0"  Width="50" Height="50" >
+
+                                                                            <Border.Background>
+                                                                                <ImageBrush ImageSource="{Binding Workout.User.ImageProfile, TargetNullValue={x:Null}}" Stretch="Fill"  />
+                                                                            </Border.Background>
+
+                                                                            <hc:Gravatar  HorizontalAlignment="Left" x:Name="gravatarInLvNewsWorkoutCommentsWorkoutSocial"
+                                                                                  Width="50" Height="50" Visibility="Hidden"  Id="{Binding Workout.User.Login}" 
+                                                                                          BorderThickness="0.6" BorderBrush="#333333"
+                                                                            Style="{StaticResource GravatarCircle}">
+                                                                            </hc:Gravatar>
+
+                                                                        </Border>
+
+                                                                        <StackPanel Margin="10" VerticalAlignment="Center">
+
+                                                                            <TextBlock Text="{Binding Workout.User.FIO}" FontSize="23" />
+                                                                            <TextBlock Text="{Binding Workout.User.Description}" FontSize="18" Foreground="Gray" Margin="0 10 0 0"/>
+                                                                        </StackPanel>
+                                                                    </StackPanel>
+
+
+                                                                    <StackPanel   VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+                                                                        <TextBlock  Text="Рейтинг:" FontSize="23" />
+                                                                        <materialDesign:RatingBar
+                                                             x:Name="ratinBarWorkoutInSocialTab"
                                                              Min="0" HorizontalAlignment="Right"
                                                              Max="5"
-                                                             Value="0"
+                                                             Value="{Binding Workout.AvgRating}"
                                                              ValueIncrements="0.5"
-                                                             IsPreviewValueEnabled="True" />
-                                                            </StackPanel>
+                                                             IsReadOnly="True" />
+                                                                    </StackPanel>
 
 
 
 
-                                                            <StackPanel Margin="0 15 0 0"  Grid.Row="1" Grid.ColumnSpan="2">
-                                                                <TextBlock 
+                                                                    <StackPanel Margin="0 15 0 0"  Grid.Row="1" Grid.ColumnSpan="2">
+                                                                        <TextBlock 
                               
                     FontSize="23" TextWrapping="Wrap"
                     Text="Описание:" 
                     
                     />
-                                                                <TextBlock 
+                                                                        <TextBlock 
                        Margin="0 5 0 0"       
                     FontSize="20" TextWrapping="Wrap"
-                    Text="ОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасниеОписаниеОпиасние" 
+                    Text="{Binding Workout.Description}" 
                     
                     />
 
 
-                                                                <StackPanel  Margin="0 15 0 0" Orientation="Horizontal">
-                                                                    <TextBlock 
+
+                                                                        <StackPanel  Margin="0 15 0 0" Orientation="Horizontal">
+                                                                            
+                                                                            <TextBlock 
+                              
+                    FontSize="23" TextWrapping="Wrap"
+                    Text="Сложность :" 
+                     
+                    />
+                                                                            <TextBlock 
+                              
+                    FontSize="20" VerticalAlignment="Bottom" TextWrapping="Wrap"
+                    Text="{Binding Workout.DificultyName}" 
+                    
+                    />
+
+                                                                            <TextBlock 
+                              
+                    FontSize="23" TextWrapping="Wrap" Margin="20 0 0 0"
+                    Text="Длительность :" 
+                     
+                    />
+                                                                            <TextBlock 
+                              
+                    FontSize="20" VerticalAlignment="Bottom" TextWrapping="Wrap"
+                    Text="{Binding Workout.DurationInMin}" 
+                    
+                    />
+                                                                        </StackPanel>
+
+
+
+
+                                                                            <StackPanel  Margin="0 15 0 0" Orientation="Horizontal">
+                                                                            <TextBlock 
                               
                     FontSize="23" TextWrapping="Wrap"
                     Text="Количество упражнений:" 
                      
                     />
-                                                                    <TextBlock 
+                                                                            <TextBlock 
                               
                     FontSize="20" VerticalAlignment="Bottom" TextWrapping="Wrap"
-                    Text="12" 
+                    Text="{Binding Workout.QtyExersice}" 
                     
                     />
-                                                                </StackPanel>
+                                                                        </StackPanel>
 
-                                                                <Expander  Margin="0 15 0 0" BorderThickness="0" Background="Transparent"   >
-                                                                    <Expander.Resources>
-                                                                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
-                                                                    </Expander.Resources>
-                                                                    <Expander.Header>
-                                                                        <TextBlock 
-                      Margin="-23.8 0 0 0"           
+                                                                        <Expander  Margin="0 15 0 0" BorderThickness="0" Background="Transparent"
+    >
+                                                                            <Expander.Header>
+                                                                                <TextBlock 
+                       Margin="-23.8 0 0 0"         
                     FontSize="23" TextWrapping="Wrap"
                     Text="Мускулы:" 
                     />
-                                                                    </Expander.Header>
-                                                                    <!--100% - 600width-->
-                                                                    <StackPanel Margin="5 0 0 0">
-                                                                        <hc:ScrollViewer>
-                                                                            <StackPanel>
+                                                                            </Expander.Header>
+                                                                            <!--100% - 600width-->
 
-                                                                                <StackPanel  Height="70">
-                                                                                    <TextBlock 
+                                                                            <ListView
+                                                                                  Background="Transparent"
+                                                                                  BorderThickness="0" 
+                                                                                  ItemsSource="{Binding Workout.qtyMuscleInWorkout}"
+                                                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                                    Style="{DynamicResource ListBoxBaseStyle}"
+                                                                                  >
+                                                                                <ListView.ItemsPanel>
+                                                                                    <ItemsPanelTemplate  >
+                                                                                        <StackPanel/>
+                                                                                    </ItemsPanelTemplate >
+                                                                                </ListView.ItemsPanel >
+                                                                                <ListView.ItemTemplate  >
+                                                                                    <DataTemplate >
+                                                                                        <StackPanel  Height="70">
+                                                                                            <TextBlock 
                                               Margin="0 10 0 5"         
                                               FontSize="20" TextWrapping="Wrap"
-                                              Text="Спина" 
+                                               Text="{Binding Name}" 
                                               />
-                                                                                    <StackPanel Orientation="Horizontal" >
-                                                                                        <Border Height="30" Width="150" CornerRadius="8" Background="#ff844b"/>
-                                                                                        <TextBlock Margin="10 0 0 0"
+                                                                                            <StackPanel Orientation="Horizontal" >
+                                                                                                <Border Height="30" Width="{Binding width}" CornerRadius="8" Background="#ff844b"/>
+                                                                                                <TextBlock Margin="10 0 0 0"
                                               VerticalAlignment="Center"        
                                               FontSize="20"  TextWrapping="Wrap"
-                                              Text="25" 
+                                              Text="{Binding qtyInPercent}" 
                                               />
-                                                                                        <TextBlock 
+                                                                                                <TextBlock 
                                               VerticalAlignment="Center"      
                                               FontSize="20" TextWrapping="Wrap"
                                               Text="%" 
                                               />
-                                                                                    </StackPanel>
-                                                                                </StackPanel>
-
-                                                                                <StackPanel  Height="70">
-                                                                                    <TextBlock 
-                                             Margin="0 5 0 5"         
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="Грудь" 
-                                              />
-                                                                                    <StackPanel Orientation="Horizontal">
-                                                                                        <Border Height="30" Width="270" CornerRadius="8" Background="#ff844b"/>
-                                                                                        <TextBlock 
-                                              Margin="10 0 0 0"
-                                              VerticalAlignment="Center"       
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="45" 
-                                              />
-                                                                                        <TextBlock 
-                                             Margin="10 0 0 0"
-                                              VerticalAlignment="Center"        
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="%" 
-                                              />
-                                                                                    </StackPanel>
-                                                                                </StackPanel>
+                                                                                            </StackPanel>
+                                                                                        </StackPanel>
 
 
-                                                                                <StackPanel  Height="70">
-                                                                                    <TextBlock 
-                                              Margin="0 5 0 5"         
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="Плечи" 
-                                              />
-                                                                                    <StackPanel Orientation="Horizontal">
-                                                                                        <Border Height="30" Width="180" CornerRadius="8" Background="#ff844b"/>
-                                                                                        <TextBlock 
-                                              Margin="10 0 0 0"
-                                              VerticalAlignment="Center"        
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="30" 
-                                              />
-                                                                                        <TextBlock 
-                                             Margin="10 0 0 0"
-                                              VerticalAlignment="Center"       
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="%" 
-                                              />
-                                                                                    </StackPanel>
-                                                                                </StackPanel>
+                                                                                    </DataTemplate>
 
+                                                                                </ListView.ItemTemplate>
 
-                                                                                <StackPanel  Height="0">
-                                                                                    <TextBlock 
-                                              Margin="0 5 0 5"         
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="Руки" 
-                                              />
-                                                                                    <StackPanel Orientation="Horizontal">
-                                                                                        <Border Height="30" Width="150" CornerRadius="8" Background="#ff844b"/>
-                                                                                        <TextBlock 
-                                            Margin="10 0 0 0"
-                                              VerticalAlignment="Center"        
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="25" 
-                                              />
-                                                                                        <TextBlock 
-                                            Margin="10 0 0 0"
-                                              VerticalAlignment="Center"        
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="%" 
-                                              />
-                                                                                    </StackPanel>
-                                                                                </StackPanel>
+                                                                                <ListView.ItemContainerStyle>
+                                                                                    <Style TargetType="{x:Type ListViewItem}">
+                                                                                        <Setter Property="Background" Value="Transparent" />
+                                                                                        <Setter Property="Template">
+                                                                                            <Setter.Value>
+                                                                                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                                                                    <ContentPresenter />
+                                                                                                </ControlTemplate>
+                                                                                            </Setter.Value>
+                                                                                        </Setter>
+                                                                                    </Style>
+                                                                                </ListView.ItemContainerStyle>
 
+                                                                            </ListView>
 
-                                                                                <StackPanel  Height="0">
-                                                                                    <TextBlock 
-                                              Margin="0 1 0 5"         
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="Ноги" 
-                                              />
-                                                                                    <StackPanel Orientation="Horizontal">
-                                                                                        <Border Height="30" Width="150" CornerRadius="8" Background="#ff844b"/>
-                                                                                        <TextBlock 
-                                            Margin="10 0 0 0"
-                                              VerticalAlignment="Center"         
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="25" 
-                                              />
-                                                                                        <TextBlock 
-                                          Margin="10 0 0 0"
-                                              VerticalAlignment="Center"        
-                                              FontSize="20" TextWrapping="Wrap"
-                                              Text="%" 
-                                              />
-                                                                                    </StackPanel>
-                                                                                </StackPanel>
+                                                                        </Expander>
 
-                                                                            </StackPanel>
-
-                                                                        </hc:ScrollViewer>
                                                                     </StackPanel>
 
-                                                                </Expander>
 
-                                                            </StackPanel>
 
+                                                                </Grid>
+
+
+
+
+
+                                                            </Grid>
+
+
+
+                                                            <Button Margin="-3"
+                                                   Style="{StaticResource MaterialDesignToolForegroundButton}" 
+                                                  Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"    
+                                                   HorizontalAlignment="Left" VerticalAlignment="Top" Height="35">
+                                                                <materialDesign:PackIcon
+                                                      Kind="ArrowLeft" Width="32" Height="32"
+                                                      HorizontalAlignment="Right" />
+
+                                                                <Button.Triggers>
+                                                                    <EventTrigger RoutedEvent="Button.Click">
+                                                                        <BeginStoryboard Name="animOpenWorkout">
+                                                                            <Storyboard >
+                                                                                <DoubleAnimation Duration="0:0:0.300"  Storyboard.TargetName="gridWorkoutInLvNewsSocial" Storyboard.TargetProperty="Height" To="600" />
+                                                                            </Storyboard>
+                                                                        </BeginStoryboard>
+
+                                                                        <RemoveStoryboard BeginStoryboardName="animOpenWorkout"/>
+                                                                    </EventTrigger>
+                                                                </Button.Triggers>
+
+                                                            </Button>
 
 
                                                         </Grid>
@@ -809,122 +877,98 @@
 
 
 
-                                                    </Grid>
+                                                    </materialDesign:TransitionerSlide>
 
 
-                                                    <Button Margin="-3"
-                                                   Style="{StaticResource MaterialDesignToolForegroundButton}" 
-                                                  Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"    
-                                                   HorizontalAlignment="Left" VerticalAlignment="Top">
-                                                        <materialDesign:PackIcon
-                                                      Kind="ArrowLeft" Width="29" Height="29"
-                                                      HorizontalAlignment="Right" />
-                                                    </Button>
-
-                                                </Grid>
 
 
-                                            </materialDesign:TransitionerSlide>
+
+                                                </materialDesign:Transitioner>
 
 
 
 
 
 
-                                        </materialDesign:Transitioner>
+
+                                            </materialDesign:DrawerHost>
+
+                                            <DataTemplate.Triggers>
 
 
+                                                <DataTrigger Binding="{Binding ElementName=toggleLikeInLvNewsSocial, Path=IsChecked}" Value="True">
 
-                                    </materialDesign:DrawerHost>
+                                                    <Setter  TargetName="badgetLikeInSOvialLv" Property="BadgeBackground" Value="#FFFF844B" />
+                                                </DataTrigger>
 
+                                                <DataTrigger Binding="{Binding  Path=SelectedIndex, ElementName=transitionerInLvNewsSocial}" Value="0">
+                                                    <Setter TargetName="gridWorkoutInLvNewsSocial" Property="Height" Value="600" />
+                                                </DataTrigger>
 
-
-
-
-
-                                    <!--Example 2-->
-                                    <Border Background="white" Margin="0 40 0 0" CornerRadius="20">
-
-                                        <Grid  >
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="500"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-                                            <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                                                <hc:Gravatar Name="gravatar2" HorizontalAlignment="Left" Width="50" Height="50" Id="1234" BorderThickness="0.6" BorderBrush="#333333"
-                     Style="{StaticResource GravatarCircle}"/>
-                                                <StackPanel Margin="10" VerticalAlignment="Center">
-
-                                                    <TextBlock Text="Surname Fname" />
-                                                    <TextBlock Text="30.11.2022 14:19" Foreground="Gray" Margin="0 10 0 0"/>
-                                                </StackPanel>
-
-                                            </StackPanel>
+                                                <DataTrigger Binding="{Binding  isLikeCurrentUser,  TargetNullValue={x:Null}}" Value="true">
+                                                    <Setter TargetName="toggleLikeInLvNewsSocial" Property="IsChecked" Value="True" />
+                                                </DataTrigger>
 
 
-                                            <TextBlock Margin="10" Text="Новое фотоfdgdffdgfdgfdgsdgfffffdghfdghdghdgfh" Grid.Row="1"/>
-
-                                            <Image Margin="10" Source="/Res/exampleWorkout.jpg"  Stretch="Fill"  Grid.Row="2"/>
-
-
-                                            <StackPanel Grid.Row="4" Margin="10" Orientation="Horizontal">
-
-                                                <materialDesign:Badged
-                            Name="badgedLike2" Badge="3" BadgeBackground="gray" >
-                                                    <Button x:Name="btnLike2" Content="{materialDesign:PackIcon HeartOutLine}" Foreground="black"
-                    HorizontalAlignment="Left" 
-                    Click="btnLike_Click"
-                    Background="#f5f5f5" BorderThickness="0" Width="100"
-                    >
-
-                                                        <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
-                                                        <hc:FloatingBlock.ContentTemplate>
-                                                            <DataTemplate>
-                                                                <Path Stretch="Uniform" Data="{StaticResource LoveGeometry}" Fill="{DynamicResource DangerBrush}" Width="16" Height="16"/>
-                                                            </DataTemplate>
-                                                        </hc:FloatingBlock.ContentTemplate>
-                                                    </Button>
-                                                </materialDesign:Badged>
+                                                <DataTrigger Binding="{Binding  Path=SelectedIndex, ElementName=transitionerInLvNewsSocial}" Value="1">
+                                                    <Setter TargetName="gridWorkoutInLvNewsSocial" Property="Height" Value="250" />
+                                                </DataTrigger>
 
 
+                                                <DataTrigger Binding="{Binding  AllComments.Count,  TargetNullValue={x:Null}}" Value="0">
+                                                    <Setter TargetName="tbIfLvCommentsNull" Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
 
-                                                <materialDesign:Badged Margin="20 0 0 0"
-                            Name="badgedComment2" Badge="1" BadgeBackground="gray" >
-                                                    <Button x:Name="btnComment2" Content="{materialDesign:PackIcon CommentOutLine}" Foreground="Black"
-                    HorizontalAlignment="Left" 
-                                    Click="btnComment_Click"
-                    Background="#f5f5f5" BorderThickness="0" Width="100"
-                    >
-                                                        <materialDesign:ButtonAssist.CornerRadius>10</materialDesign:ButtonAssist.CornerRadius>
-
-                                                    </Button>
-                                                </materialDesign:Badged>
+                                                <DataTrigger Binding="{Binding  Workout.AllWorkoutReaction.Count,  TargetNullValue=0}" Value="0">
+                                                    <Setter TargetName="tbIfLvCommentsWorkoutNull" Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding  User.ImageProfile,  TargetNullValue={x:Null}}" Value="{x:Null}">
+                                                    <Setter TargetName="gravatarInLvNewsWorkoutCommentsWorkoutSocial" Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
 
 
+                                                <DataTrigger Binding="{Binding  User.ImageProfile,  TargetNullValue={x:Null}}" Value="{x:Null}">
+                                                    <Setter TargetName="gravatarInLvNewsSocial" Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding  Path=IsBottomDrawerOpen, ElementName=DrawerHostInLvNewsSocial}" Value="True">
+                                                    <Setter TargetName="gridWorkoutInLvNewsSocial" Property="Height" Value="600" />
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding  Path=IsBottomDrawerOpen, ElementName=DrawerHostInLvNewsSocial}" Value="False">
+                                                    <Setter TargetName="gridWorkoutInLvNewsSocial" Property="Height" Value="250" />
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding IDWorkout, TargetNullValue={x:Null}}" Value="{x:Null}">
+                                                    <Setter TargetName="btnTrainIbLvNewsSocial" Property="Visibility" Value="Hidden" />
+                                                </DataTrigger>
 
 
+                                            </DataTemplate.Triggers>
+
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListViewItem}">
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                        <ContentPresenter />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
 
 
-                                            </StackPanel>
+                                </ListView>
 
+                               
+                            </Grid>
 
-
-
-                                        </Grid>
-
-
-                                    </Border>
-
-                                </StackPanel>
-
-                            </hc:ScrollViewer>
-
-
-                        </Grid>
-
+                        </materialDesign:DialogHost>
 
 
 
@@ -937,14 +981,22 @@
                             <Grid >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="38*"/>
-                                    <RowDefinition Height="7*"/>
+                                    <RowDefinition Height="8*"/>
                                 </Grid.RowDefinitions>
-                                <StackPanel >
-                                    <hc:ChatBubble  Content="Привет" Type="String" Role="Sender"  Background="#ff844b" />
-                                    <hc:ChatBubble  Content="Как дела?" Type="String" Role="Sender"  Background="#ff844b" />
-                                    <hc:ChatBubble  Content="Все хорошо" Type="String" Role="Receiver"  Background="#ff844b" />
-                                    <hc:ChatBubble  Content="А у тебя" Type="String" Role="Receiver"  Background="#ff844b" />
-                                </StackPanel>
+
+                                <ListBox Name="listBoxChat" 
+                                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                 ScrollViewer.CanContentScroll="False" 
+                                                 Background="Transparent" 
+                                                 BorderThickness="0" d:ItemsSource="{d:SampleData ItemCount=5}"
+                                                 Style="{StaticResource StackPanelVerticalListBox}" >
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <hc:ChatBubble Role="{Binding Role}" Type="{Binding TypeMessage}"
+                                                                   Content="{Binding MessageCb}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
 
                                 <Border  Background="#f5f5f5"  Grid.Row="2" CornerRadius="38" Margin="20" >
                                     <Grid >
@@ -955,15 +1007,15 @@
                                         </Grid.ColumnDefinitions>
 
 
-                                        <Button   x:Name="btnPickImgImgInMessageTab" Background="Transparent"  Width="50" Height="50"
+                                        <Button   x:Name="btnPickImgImgInMessageTab" Click="btnPickImgImgInMessageTab_Click" Background="Transparent"  Width="50" Height="50"
                             Style="{StaticResource MaterialDesignIconForegroundButton}" >
                                             <materialDesign:PackIcon  Kind="ImageMove" Foreground="#333333" Width="40" Height="40" />
                                         </Button>
 
 
-                                        <TextBox  
+                                        <TextBox  Name="tbMessage"
                              MaxLength="150" Grid.Column="1" 
-                           FontSize="30"  VerticalAlignment="Center"
+                           FontSize="30"  VerticalAlignment="Center" KeyDown="tbMessage_KeyDown"
                            BorderThickness="0"  materialDesign:HintAssist.Hint="Введите сообщение"
                          materialDesign:TextFieldAssist.CharacterCounterVisibility="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxTextCountComboBox, Converter={StaticResource BooleanToVisibilityConverter}}"
                          VerticalScrollBarVisibility="Auto"  />
@@ -971,7 +1023,7 @@
 
 
 
-                                        <Button   Grid.Column="2" x:Name="btnSentImgInMessageTab" Background="Transparent"  Width="50" Height="50"
+                                        <Button   Grid.Column="2" x:Name="btnSentImgInMessageTab" Click="btnSentImgInMessageTab_Click" Background="Transparent"  Width="50" Height="50"
                             Style="{StaticResource MaterialDesignIconForegroundButton}" >
                                             <materialDesign:PackIcon  Kind="Send" Foreground="#333333" Width="40" Height="40" />
                                         </Button>
@@ -980,6 +1032,7 @@
 
                                     </Grid>
                                 </Border>
+                        
                             </Grid>
 
                         </Border>
@@ -995,26 +1048,27 @@
 
             </Grid>
 
-            <materialDesign:PackIcon Margin="3,3,0,0" 
+            <materialDesign:PackIcon  Grid.Row="1" Margin="5,20,0,0" 
                 Width="20" Name="exitProfile" Height="20" Cursor="Hand" MouseLeftButtonUp="exitProfile_MouseLeftButtonUp"
                 Kind="ArrowLeft" Foreground="#FF494949" Grid.ColumnSpan="2">
             </materialDesign:PackIcon>
 
 
             <!--RightBackground-->
-            <Border Margin="20,20,20,20" Background="#f5f5f5" CornerRadius="20" Grid.Column="2">
+            <Border Margin="20,20,20,20"  Grid.Row="1" Background="#f5f5f5" CornerRadius="20" Grid.Column="2">
                 <Grid>
                     <StackPanel Margin="0 20 0 0">
 
 
-                        <TextBlock Margin="10" FontSize="35" Text="Достижения user2444" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center"/>
-
+                            <TextBlock Margin="10" FontSize="35" Text="Достижения" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                            
+                       
                         <Border Background="White" Height="70" Width="230" Margin="10" CornerRadius="20">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
 
                                 <StackPanel Margin="10">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0">
-                                        <TextBlock Text="80" FontSize="20" />
+                                        <TextBlock Name="tbWeitght" Text="80" FontSize="20" />
                                         <TextBlock Text="кг" Foreground="#b6c2d2" VerticalAlignment="Bottom"/>
 
 
@@ -1025,7 +1079,7 @@
 
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0">
-                                        <TextBlock Text="180" FontSize="20" />
+                                        <TextBlock Name="tbHeight" Text="180" FontSize="20" />
                                         <TextBlock Text="см" Foreground="#b6c2d2" VerticalAlignment="Bottom"/>
 
 
@@ -1036,7 +1090,7 @@
 
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0">
-                                        <TextBlock Text="19" FontSize="20" />
+                                        <TextBlock Name="tbAge" Text="19" FontSize="20" />
                                         <TextBlock Text="" Foreground="#b6c2d2" VerticalAlignment="Bottom"/>
 
 
@@ -1056,12 +1110,12 @@
                             <TextBlock Text="Прогресс за неделю" HorizontalAlignment="Center" FontSize="25" Margin="0 0 0 10"/>
                             <Border Background="White"   CornerRadius="20">
                                 <StackPanel Margin="10">
-                                    <hc:CircleProgressBar Value="25" FontSize="30" Margin="16,0,0,0"/>
+                                    <hc:CircleProgressBar Value="29" FontSize="30" Margin="16,0,0,0"/>
                                     <StackPanel Orientation="Vertical">
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <TextBlock Text="User2444 достигли " TextAlignment="Center"
+                                            <TextBlock x:Name="tbFnameInProgress" Text="User2444 достиг " TextAlignment="Center"
                                                                TextWrapping="Wrap" FontSize="20" />
-                                            <TextBlock Text="25%" Foreground="#ff844b" TextAlignment="Center" 
+                                            <TextBlock Text="29%" Foreground="#ff844b" TextAlignment="Center" 
                                                                TextWrapping="Wrap" FontSize="20" />
                                         </StackPanel>
 
@@ -1077,43 +1131,74 @@
 
                         <StackPanel Margin="20">
                             <TextBlock Text="Последние трнеировки" HorizontalAlignment="Center" FontSize="25" Margin="0 0 0 10"/>
-                            <Border Background="White"   CornerRadius="20">
-                                <StackPanel Margin="5" Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="Тренировка " TextAlignment="Center"
+                           
+
+                            <ListView MaxHeight="240"
+                                                    Name="lvHistoryWorkoutUser"
+                                                                                  Background="Transparent" 
+                                                                                  BorderThickness="0" d:ItemsSource="{d:SampleData ItemCount=5}"
+                                                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                                                    Style="{DynamicResource ListBoxBaseStyle}"
+                                                                                  >
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate  >
+                                        <StackPanel/>
+                                    </ItemsPanelTemplate >
+                                </ListView.ItemsPanel >
+                                <ListView.ItemTemplate  >
+                                    <DataTemplate >
+
+                                        <Border Background="White" Margin="0 0 0 20"  Height="60" CornerRadius="20">
+                                            <StackPanel Margin="5" Orientation="Vertical">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock Text="{Binding nameWorkout}" TextAlignment="Center"
                                                                TextWrapping="Wrap" FontSize="20" />
-                                    </StackPanel>
+                                                </StackPanel>
 
-                                    <TextBlock Text="21.12.2022 " TextAlignment="Center" Width="300" 
+                                                <TextBlock Text="{Binding DateWorkout,StringFormat='{}{0:dd.MM.yyyy}'}" TextAlignment="Center" Width="300" 
                                                                TextWrapping="Wrap" FontSize="20" />
 
 
-                                </StackPanel>
+                                            </StackPanel>
 
-                            </Border>
-
-                            <Border Background="White"   CornerRadius="20" Margin="0 10 0 0">
-                                <StackPanel Margin="5" Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="Тренировка " TextAlignment="Center"
-                                                               TextWrapping="Wrap" FontSize="20" />
-                                    </StackPanel>
-
-                                    <TextBlock Text="21.12.2022 " TextAlignment="Center" Width="300" 
-                                                               TextWrapping="Wrap" FontSize="20" />
+                                        </Border>
 
 
-                                </StackPanel>
 
-                            </Border>
+
+
+                                        <DataTemplate.Triggers>
+
+
+
+                                        </DataTemplate.Triggers>
+
+                                    </DataTemplate>
+
+                                </ListView.ItemTemplate>
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                    <ContentPresenter />
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+
+                            </ListView>
                         </StackPanel>
 
                         <Button 
                                                 Grid.Column="1" Name="btnTrainterService"
-                                        Margin="0 20 0 0" Click="btnTrainterService_Click"
-                                              Width="230" Height="40"
+                                         Click="btnTrainterService_Click"
+                                              Width="230" Height="0"
                                               Background="#ff844b"
-                                              BorderBrush="#ff844b"
+                                              BorderBrush="#ff844b" IsEnabled="False"
                                               Foreground="White"
                                               Content="Тренирские услуги"
                                               FontSize="19" Cursor="Hand">

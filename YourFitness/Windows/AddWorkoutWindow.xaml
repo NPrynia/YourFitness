@@ -7,16 +7,66 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d" FontFamily="Cascadia Mono Light"
-        WindowStartupLocation="CenterScreen"
+         WindowStyle="None" AllowsTransparency="True"
         
-        Title="AddWorkoutWindow" Height="900" Width="1550">
-    <Grid Margin="10">
+        Title="AddWorkoutWindow"
+        Background="Transparent"
+         Height="1000" Width="800" 
+        WindowStartupLocation="CenterScreen" >
+    <materialDesign:Card UniformCornerRadius="10" Margin="25"  materialDesign:ElevationAssist.Elevation="Dp4">
 
 
-        <Grid>
+
+
+        <materialDesign:DialogHost 
+  DialogTheme="Inherit" Name="dhImgPicker">
+            <materialDesign:DialogHost.DialogContent>
+                <Border Width="500" Height="350" CornerRadius="20" Background="White">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="41*"/>
+                            <RowDefinition Height="9*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Выбор изображения" HorizontalAlignment="Center"
+                               FontSize="25"
+                               />
+
+                        <hc:ImageSelector Name="isWorkout" Grid.Row="1"  BorderBrush="Black" Width="250" Height="250"/>
+                        <Button VerticalAlignment="Center"
+                        Grid.Row="2" Name="btnSaveWorkout"
+                        Click="btnSaveWorkout_Click"
+                        FontSize="18" Content="Продолжить" 
+                        materialDesign:ButtonAssist.CornerRadius="20" 
+                        Height="40" Width="250" />
+
+
+
+                    </Grid>
+
+                </Border>
+
+
+
+
+            </materialDesign:DialogHost.DialogContent>
+
+
+
+
+
+
+
+
+
+        <Grid Margin="10">
+
+
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="647*"/>
-                    <ColumnDefinition Width="300*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
@@ -24,121 +74,152 @@
                 </Grid.RowDefinitions>
 
 
-                <TextBox materialDesign:HintAssist.Hint="Название тренировки"
-                                       Grid.ColumnSpan="2"   TextAlignment="Center"
+               
+
+
+
+                <StackPanel Margin="10"
+                                Grid.Row="1" >
+                    <TextBox materialDesign:HintAssist.Hint="Название тренировки"
+                    Margin="0 0 0 20" 
+                             Name="tbNameWorkout"
+                             Grid.ColumnSpan="2"   TextAlignment="Center"
                                        HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="40" />
-
-
-
-                <StackPanel 
-                                Margin="30"
-                                Grid.Row="1" >
 
 
                     <TextBlock Text="Описание:" 
                            FontSize="30" />
 
                     <TextBox 
-                                Margin="0 20 200 0"
+                        Name="tbDescriptionWorkout"
+                                Margin="0 20 130 0"
                                 MinHeight="100"         
                                Style="{StaticResource MaterialDesignOutlinedTextBox}" TextWrapping="Wrap"
                  FontSize="20" 
                  materialDesign:HintAssist.IsFloating="True" />
 
-                <TextBlock Text="Упражнения:" Margin="0 20 0 0"
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Width="300" Margin="0 0 50 0">
+                            <TextBlock Text="Сложность:"  Margin="0 20 0 10"
+                           FontSize="30" />
+                            <Slider
+  Value="1"
+  Minimum="1"
+  Maximum="3" Name="sliderDificultyWorkout"
+  Style="{StaticResource MaterialDesignDiscreteSlider}"
+  TickPlacement="BottomRight" />
+
+
+
+                        </StackPanel>
+
+                        <StackPanel>
+                            <TextBlock Text="Тип тренировки:"  Margin="0 20 0 10"
                            FontSize="30" />
 
-                <Border Margin="0 10 200 0"   VerticalAlignment="Top">
-                    <Grid>
-                        <materialDesign:DialogHost
+                                <ComboBox 
+   Name="cbTypeWorkout"
+                                    SelectedIndex="0"
+     Width="250" HorizontalAlignment="Left">
+                                </ComboBox>
+                            </StackPanel>
+
+
+                    </StackPanel>
+
+
+                    <TextBlock Text="Упражнения:" Margin="0 20 0 0"
+                           FontSize="30" />
+
+                    <Border Margin="0 10 130 0" MaxHeight="390"   VerticalAlignment="Top">
+                        <Grid>
+                            <materialDesign:DialogHost 
   DialogTheme="Inherit">
-                            <materialDesign:DialogHost.DialogContent>
+                                <materialDesign:DialogHost.DialogContent>
 
-                                <Border  Background="White" Width="400" Height="300" CornerRadius="20">
 
-                                    <StackPanel
+                                    <Grid>
+
+                                        <Border  Background="White" Width="500" Height="300" CornerRadius="20">
+
+                                            <StackPanel
       Margin="16">
-                                        <TextBlock
+                                                <TextBlock
         Text="Найти упражнение" Margin="0 10" />
-                                        <ComboBox
+                                                <ComboBox 
   materialDesign:HintAssist.Hint="Поиск" Name="cbExercise"
-  materialDesign:HintAssist.HintOpacity=".26"
+  materialDesign:HintAssist.HintOpacity=".26"  SelectionChanged="cbExercise_SelectionChanged"
   materialDesign:ComboBoxAssist.MaxLength="2"
   IsEditable="True">
-                                            <ComboBoxItem
-    Content="Приседания" />
-                                            <ComboBoxItem
-    Content="Отжимания" />
-                                            <ComboBoxItem
-    Content="Подтягивание" />
-                                            <ComboBoxItem
-    Content="Планка" />
-                                        </ComboBox>
+                                                </ComboBox>
 
-                                        <StackPanel  Margin="0 10" Orientation="Horizontal">
+                                                <StackPanel  Margin="0 10" Orientation="Horizontal">
 
-                                            <TextBlock Text="Количество|Секунд :" VerticalAlignment="Center"/>
-                                            <TextBox Name="tbQty" Text="" Width="30"/>
+                                                    <TextBlock Name="tbTypeExercise" Text="Количество: " VerticalAlignment="Center"/>
+                                                    <TextBox Name="tbQty" Text="" Width="30"/>
 
-                                        </StackPanel>
+                                                </StackPanel>
 
-                                        <StackPanel
+                                                <StackPanel
         Orientation="Horizontal"
         HorizontalAlignment="Center">
-                                            <Button
+                                                    <Button
           Style="{StaticResource MaterialDesignFlatButton}"
           IsCancel="True"
           Margin="0 8 8 0"
           Content="Отмена"
           Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
-                                            </Button>
-                                            <Button
+                                                    </Button>
+                                                    <Button
           Style="{StaticResource MaterialDesignFlatButton}"
           IsDefault="True"
           Margin="0 8 8 0"
           Content="Добавить" Name="addExerciseInWorrkout" Click="addExerciseInWorrkout_Click"
           Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
-                                            </Button>
+                                                    </Button>
 
-                                        </StackPanel>
-                                    </StackPanel>
+                                                </StackPanel>
+                                            </StackPanel>
 
-                                </Border>
+                                        </Border>
 
 
-                            </materialDesign:DialogHost.DialogContent>
-                            
-                            <Grid>
+
+                                    </Grid>
+                                    
+                                </materialDesign:DialogHost.DialogContent>
+
+                                <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition
           Height="*" />
                                         <RowDefinition
           Height="Auto" />
                                     </Grid.RowDefinitions>
-                                <hc:ScrollViewer>
-                                    <DataGrid
+                                    <hc:ScrollViewer>
+                                        <DataGrid
                                         Name="dataGridExercise"
                                          SelectionUnit="FullRow" Background="Transparent"
                                         KeyDown="dataGridExercise_KeyDown"
                                          SelectionMode="Extended" CanUserAddRows="False"
                                          AutoGenerateColumns="False" ItemsSource="{Binding}"
                                         >
-                                        
-                                        
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn IsReadOnly="True" Header="Название упражнения" Binding="{Binding Path=exercise}" />
-                                            <DataGridTextColumn Header="Количестово" Binding="{Binding Path=qty}" />
-                                        </DataGrid.Columns>
-                                        
 
 
-                                    </DataGrid>
-                                    
-                                
-                                </hc:ScrollViewer>
-                                   
-                                   
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn IsReadOnly="True" Header="Название упражнения" Binding="{Binding Path=Name}" />
+                                                <DataGridTextColumn Header="Количестово" Binding="{Binding Path=Qty}" />
+                                            </DataGrid.Columns>
+
+
+
+                                        </DataGrid>
+
+
+                                    </hc:ScrollViewer>
+
+
                                     <Button
         Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
         Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
@@ -148,46 +229,28 @@
         Margin="0 0 28 -20"
         Content="{materialDesign:PackIcon Kind=Plus, Size=22}" />
                                 </Grid>
-                                
-                        </materialDesign:DialogHost>
+
+                            </materialDesign:DialogHost>
 
 
-                    </Grid>
-                </Border>
+                        </Grid>
+                    </Border>
+
+
 
                 </StackPanel>
 
 
-            <StackPanel Margin="10" Grid.Row="1" Grid.Column="1">
+                <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="20">
 
-                <TextBlock Text="Сложность:"  Margin="0 20 0 10"
-                           FontSize="30" />
-
-                <Slider
-  Value="1"
-  Minimum="1"
-  Maximum="3"
-  Style="{StaticResource MaterialDesignDiscreteSlider}"
-  TickPlacement="BottomRight" />
+                    <Button VerticalAlignment="Bottom"  Click="exitBtn_Click" FontSize="18" Content="Отмена" materialDesign:ButtonAssist.CornerRadius="20" Height="40" Width="250" Margin="0 0 50 0" />
+                    
+                    <Button VerticalAlignment="Bottom" Name="btnSave" Click="btnSave_Click" FontSize="18" Content="Сохранить" materialDesign:ButtonAssist.CornerRadius="20" Height="40" Width="250"/>
+                </StackPanel>
 
 
-                <TextBlock Text="Длительность:"  Margin="0 20 0 10"
-                           FontSize="30" />
 
 
-                <hc:NumericUpDown 
-                                    FontSize="20"  BorderBrush="Black"
-                                   Height="45" 
-                                    Minimum="0" Maximum="300"
-                                     Width="100" HorizontalAlignment="Left"
-                                    Style="{StaticResource NumericUpDownPlus}">
-
-                </hc:NumericUpDown>
-
-
-            </StackPanel>
-            
-                
 
 
 
@@ -198,6 +261,44 @@
             </Grid>
 
 
+            <Border 
+            Height="40" Margin="-10"
+           Background="Transparent" VerticalAlignment="Top"
+                Name="topBorder" 
+            MouseLeftButtonDown="topBorder_MouseLeftButtonDown"  >
 
-    </Grid>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
+
+                    
+                    <Button 
+                        Click="exitBtn_Click" Name="exitBtn" Margin="-5"     
+                Height="45" Width="45" Background="Transparent"  BorderThickness="0" Cursor="Hand">
+                        <materialDesign:PackIcon
+                Kind="WindowClose" Foreground="#FF494949" 
+                HorizontalAlignment="Center" >
+                        </materialDesign:PackIcon>
+
+
+                    </Button>
+
+
+
+
+
+
+                </StackPanel>
+
+
+            </Border>
+
+
+
+
+        </Grid>
+
+
+
+        </materialDesign:DialogHost>
+
+    </materialDesign:Card>
 </Window>

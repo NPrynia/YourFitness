@@ -32,12 +32,21 @@ namespace YourFitness.Pages
             {
                 btn.Foreground = Brushes.Gray;
                 btn.BorderBrush = Brushes.Gray;
+                btnContinue.Content = "Пропустить";
             }
             else
             {
-
+                btn1.Foreground = Brushes.Gray;
+                btn1.BorderBrush = Brushes.Gray;
+                btn2.Foreground = Brushes.Gray;
+                btn2.BorderBrush = Brushes.Gray;
+                btn3.Foreground = Brushes.Gray;
+                btn3.BorderBrush = Brushes.Gray;
+                btn4.Foreground = Brushes.Gray;
+                btn4.BorderBrush = Brushes.Gray;
                 btn.Foreground = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff844b");
                 btn.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#ff844b");
+                btnContinue.Content = "Продолжить";
             }
             switch (btn.Content)
             {

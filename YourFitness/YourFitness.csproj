@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>ico.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,24 +27,50 @@
     <None Remove="Res\btnсhest.jpg" />
     <None Remove="Res\example.jpg" />
     <None Remove="Res\exampleWorkout.jpg" />
+    <None Remove="Res\exercise\anim-air-bike-crunches.gif" />
+    <None Remove="Res\exercise\anim-air-squat.gif" />
+    <None Remove="Res\exercise\anim-back-slaps-wrap-around-stretch.gif" />
+    <None Remove="Res\exercise\anim-burpees.gif" />
+    <None Remove="Res\exercise\anim-dumbbell-arnold-press.gif" />
+    <None Remove="Res\exercise\anim-dumbbell-bicep-curls.gif" />
+    <None Remove="Res\exercise\anim-dumbbell-fly.gif" />
+    <None Remove="Res\exercise\anim-forward-lunges.gif" />
+    <None Remove="Res\exercise\anim-glute-bridges.gif" />
+    <None Remove="Res\exercise\anim-push-ups.gif" />
+    <None Remove="Res\exercise\anim-sit-ups.gif" />
+    <None Remove="Res\exercise\animAboveHeadChestStretch.gif" />
+    <None Remove="Res\exercise\deadlift.gif" />
+    <None Remove="Res\exercise\dumbbellBenchPress.gif" />
+    <None Remove="Res\exercise\DumbbellBentOver.gif" />
+    <None Remove="Res\exercise\plank.png" />
+    <None Remove="Res\exercise\pullUp.gif" />
     <None Remove="Res\FrontMan.png" />
+    <None Remove="Res\LoadScreen.png" />
     <None Remove="Res\myWorkout.png" />
     <None Remove="Res\pullUp.gif" />
     <None Remove="Res\SideMan.png" />
     <None Remove="Res\tempWorkout.jpg" />
     <None Remove="Res\tempWorkout2.jpg" />
-    <None Remove="tempWp\pushup1.png" />
-    <None Remove="tempWp\pushup2.png" />
-    <None Remove="tempWp\sit1.png" />
-    <None Remove="tempWp\sit2.png" />
+    <None Remove="Res\userPhoto.png" />
     <None Remove="Windows\tjji3c3j.5xb~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ico.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Res\exercise\anim-burpees.gif" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Gu.Wpf.FlipView" Version="2.0.2" />
     <PackageReference Include="HandyControl" Version="3.3.0" />
+    <PackageReference Include="HandyControl.Lang.ru" Version="3.4.0" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-beta.603" />
     <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="System.Speech" Version="8.0.0-preview.3.23174.8" />
     <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
@@ -67,16 +94,32 @@
     <Resource Include="Res\btnStretching.jpg" />
     <Resource Include="Res\example.jpg" />
     <Resource Include="Res\exampleWorkout.jpg" />
+    <Resource Include="Res\exercise\anim-air-bike-crunches.gif" />
+    <Resource Include="Res\exercise\anim-air-squat.gif" />
+    <Resource Include="Res\exercise\anim-back-slaps-wrap-around-stretch.gif" />
+    <Resource Include="Res\exercise\anim-dumbbell-arnold-press.gif" />
+    <Resource Include="Res\exercise\anim-dumbbell-bicep-curls.gif" />
+    <Resource Include="Res\exercise\anim-dumbbell-fly.gif" />
+    <Resource Include="Res\exercise\anim-forward-lunges.gif" />
+    <Resource Include="Res\exercise\anim-glute-bridges.gif" />
+    <Resource Include="Res\exercise\anim-push-ups.gif" />
+    <Resource Include="Res\exercise\anim-sit-ups.gif" />
+    <Resource Include="Res\exercise\animaboveheadcheststretch.gif" />
+    <Resource Include="Res\exercise\deadlift.gif" />
+    <Resource Include="Res\exercise\dumbbellBenchPress.gif" />
+    <Resource Include="Res\exercise\DumbbellBentOver.gif" />
+    <Resource Include="Res\exercise\plank.png" />
+    <Resource Include="Res\exercise\pullUp.gif">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Res\FrontMan.png" />
+    <Resource Include="Res\LoadScreen.png" />
     <Resource Include="Res\myWorkout.png" />
     <Resource Include="Res\pullUp.gif" />
     <Resource Include="Res\SideMan.png" />
     <Resource Include="Res\tempWorkout.jpg" />
     <Resource Include="Res\tempWorkout2.jpg" />
-    <Resource Include="tempWp\pushup1.png" />
-    <Resource Include="tempWp\pushup2.png" />
-    <Resource Include="tempWp\sit1.png" />
-    <Resource Include="tempWp\sit2.png" />
+    <Resource Include="Res\userPhoto.png" />
   </ItemGroup>
 
 </Project>

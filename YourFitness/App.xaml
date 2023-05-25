@@ -4,7 +4,7 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:YourFitness"
-             StartupUri="Windows/WorkoutWindow.xaml"
+             StartupUri="Windows/AuthWindow.xaml"
     xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
     xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf">
     <Application.Resources>
@@ -37,6 +37,8 @@
 
 
             <SolidColorBrush x:Key="PrimaryHueLightBrush"  Color="#ff844b"/>
+
+            <SolidColorBrush x:Key="DarkPrimaryBrush"  Color="#ff844b"/>
             <SolidColorBrush x:Key="PrimaryBrush"  Color="#ff844b"/>
             <SolidColorBrush x:Key="TitleBrush"  Color="#ff844b"/>
             <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="#FFFFFF"/>
@@ -318,6 +320,11 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+
+
+
+           
 
 
 
