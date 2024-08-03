@@ -1,7 +1,8 @@
 # YourFitness
 Social Network for Sports Enthusiasts 
 
-
+My graduation thesis:
+[Дипломная работа.docx](https://github.com/user-attachments/files/16482964/default.docx)
 
 ![Рисунок1](https://github.com/NPrynia/YourFitness/assets/81188162/3e30d922-d22d-44a6-bbc9-b32801f19bfa)
 
