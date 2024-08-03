@@ -4,25 +4,35 @@ Social Network for Sports Enthusiasts
 My graduation thesis:
 [Дипломная работа.docx](https://github.com/user-attachments/files/16482964/default.docx)
 
-![Рисунок1](https://github.com/NPrynia/YourFitness/assets/81188162/3e30d922-d22d-44a6-bbc9-b32801f19bfa)
 
-![Рисунок2](https://github.com/NPrynia/YourFitness/assets/81188162/293fb337-df60-4ecd-85e6-c8e77fdd24e1)
+Auth and reg window:
 
-![Рисунок3](https://github.com/NPrynia/YourFitness/assets/81188162/5eff81cf-814d-46e3-a88b-0afb49c21b5a)
+![image17](https://github.com/user-attachments/assets/e4eb3458-bd7e-441e-a795-362c3e56cedd)
 
-![Рисунок4](https://github.com/NPrynia/YourFitness/assets/81188162/5f966f14-daea-4bb0-a88f-ff26622f4347)
+![image18](https://github.com/user-attachments/assets/657792f7-66f5-461d-89a3-0377cceafb27)
 
-![Рисунок5](https://github.com/NPrynia/YourFitness/assets/81188162/0e390aa4-66cb-47b0-b7da-d1853cd3cfe2)
+Next step reg window:
+![image19](https://github.com/user-attachments/assets/fcc5db79-3ddd-4f9c-a252-a4438d4b1f2c)
 
+Main window:
+![image21](https://github.com/user-attachments/assets/71f6891c-6a1e-4315-98ff-a7f89fc8523b)
+
+Workout window:
 https://github.com/NPrynia/YourFitness/assets/81188162/6f0e793b-6421-4871-857e-d2d5c6d2d414
 
-![Рисунок6](https://github.com/NPrynia/YourFitness/assets/81188162/cfd0c818-9097-4031-8942-3abb5fc9182b)
+![image23](https://github.com/user-attachments/assets/87431c99-0f61-4fe8-a4fa-56757fb5b9d2)
 
-![Рисунок7](https://github.com/NPrynia/YourFitness/assets/81188162/fc205734-2367-4a59-8fc6-1af08b4c2be0)
+Window with your profile:
+![image24](https://github.com/user-attachments/assets/8f02e0ba-5b38-49c2-8ea5-bbaac4e5d5cf)
 
-![Рисунок8](https://github.com/NPrynia/YourFitness/assets/81188162/75584275-0d74-426e-adc0-d24d64f50262)
+Window with your workout stats:
+![image25](https://github.com/user-attachments/assets/b0b29a39-e24a-4058-b78a-2d297a5faf35)
 
-![Рисунок9](https://github.com/NPrynia/YourFitness/assets/81188162/b61aa368-85f5-4553-a0ea-a052a975faa5)
+Window with trainer service:
+![image26](https://github.com/user-attachments/assets/25d19555-ee2f-4a90-918a-1a5d8618555e)
 
-![Рисунок10](https://github.com/NPrynia/YourFitness/assets/81188162/ac132518-4bfd-4774-9953-6b29185b687d)
+Message window:
+![image27](https://github.com/user-attachments/assets/4fdb2d2f-4c43-4b54-adef-deabb4b1be4a)
+
+
 
