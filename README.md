@@ -15,7 +15,11 @@ Next step reg window:
 ![image19](https://github.com/user-attachments/assets/fcc5db79-3ddd-4f9c-a252-a4438d4b1f2c)
 
 Main window:
-![image21](https://github.com/user-attachments/assets/71f6891c-6a1e-4315-98ff-a7f89fc8523b)
+
+
+https://github.com/user-attachments/assets/46ba2d10-fdc1-4ab6-b179-d262905a786d
+
+
 
 Workout window:
 https://github.com/NPrynia/YourFitness/assets/81188162/6f0e793b-6421-4871-857e-d2d5c6d2d414
